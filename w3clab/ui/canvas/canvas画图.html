@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        canvas {
+            border:1px solid #ddd;
+        }
+        .canvas {
+            width:126px;
+            /*border:1px solid #ddd;*/
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas"><canvas width="126" height="645"></canvas></div>
+   
+   <script type="text/javascript">
+       var width = 126, height = 645,
+           x = width / 2, y = height / 2,
+           canvas = document.querySelector("canvas"),
+           context = canvas.getContext('2d');
+
+       var draw1 = function () {
+           context.beginPath();
+           context.moveTo(width / 3, 25);
+           context.lineTo(width*2 / 3, 25);
+           context.lineTo(width * 5 / 6, 25);
+       }
+       var draw = function () {
+
+           context.lineWidth = 1;
+           //context.translate(x, y);//原点移到x,y处，即要画的多边形中心
+           context.beginPath();
+           context.strokeStyle = "green";
+           context.fillStyle = "#FFDE00";
+
+           context.moveTo(width/3, 0);
+           context.lineTo(2 * width / 3, 0);
+           context.lineTo(width, 25);
+           context.lineTo(width, height - 25);
+           context.lineTo(2 * width / 3, height);
+           context.lineTo(width / 3, height);
+           context.lineTo(0, height - 25);
+           context.lineTo(0, 25);
+
+           context.closePath()
+           context.stroke();
+           context.fill();
+
+           context.rect(width / 3, 50, width / 3, 545);
+           context.stroke();
+       };
+       draw();
+   </script>
+</body>
+</html>
+<!--http://www.datavis.cn/jd618/c1/c1.html-->

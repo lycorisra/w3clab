@@ -1,0 +1,336 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+body {
+    /*width: 100%;*/
+    height: 100%;
+    padding-left: 10px;
+}
+.menu-head {
+    margin-right:0;
+}
+div.wrap-table {
+    height: 82%;
+    /*margin-top: 5px;*/
+}
+.error {
+    box-shadow: 0 0 10px #ff4136;
+}
+.form-pluri {
+    text-align: center;
+}
+.form-pluri li {
+    width:50%;
+    height: 50px; /*这里需要设置高度，否则在火狐浏览器下会出现错位的情况（一行显示两个表单，且一个是文本框，一个是下拉框）*/
+    float:left;
+    /*border:1px solid #ddd;
+    box-sizing:border-box;*/
+}
+.form-pluri li.fullrow {
+    width:100%;
+    height:auto;
+    clear:both;
+    /*text-align:left;*/
+}
+/*对表格元素的样式设置*/
+.table {
+    width: 100%;
+    text-align:center;
+    border:1px solid #ddd;
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.table th {
+    /*text-align: left;*/
+    height: 34px;
+    background: #fbfbfb;
+    /*text-indent: 10px;*/
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.table td {
+    /*text-align: left;*/
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 7px 10px;
+}
+    .table td span {
+        margin-right:10px;
+    }
+        .table td span.transaction {
+            color: #BBB9B9;
+            text-decoration: line-through;
+        }
+label {
+    /*vertical-align:middle;*/
+    /*font-weight: bold;*/
+    padding-left: 10px;
+}
+.error {
+    box-shadow: 0 0 10px #ff4136;
+}
+.buttons {
+    width: 100%;
+    clear: both;
+    margin-top: 10px;
+    text-align: center;
+}
+.button[disabled],.disable,.disable:hover {
+    background-color: #ddd;
+    cursor: default;
+}
+.applyform {
+    width: 700px;
+    /*height: 300px;*/
+    margin: 20px auto;
+    /*margin-bottom:0;*/
+    text-align: left;
+}
+    .applyform .header h2 {
+        text-align: center;
+    }
+    .applyform .header p {
+        text-align:right;
+    }
+
+    .applyform section {
+        margin-top: -1px;
+    }
+    .applyform .header p input {
+        width: auto;
+        border: none;
+        font-size: 12px;
+    }
+    .applyform input, .applyform select, .applyform textarea {
+        width:100%;
+    }
+    .applyform table caption {
+        height: 50px;
+        line-height: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        background-color: #F7F6F6;
+    }
+    .applyform .table th {
+        min-width:120px;
+    }
+    .applyform .table td {
+        text-align: left;
+    }
+    .applyform .table select,.applyform .table input {
+        width:196px;
+    }
+    .applyform .history table th {
+        min-width:100px;
+    }
+    .applyform .history table td {
+        text-align:center;
+    }
+    .applyform input.button {
+        width:auto;
+    }
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
+
+.disableselect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    /* 以下两个属性目前并未支持，写在这里为了减少风险 */
+    -o-user-select: none;
+    user-select: none;
+}
+.period {
+    position: relative;
+    /*word-spacing: -4px;*/
+    width: 220px;
+    display: inline-block;
+    font-size:12px;
+}
+
+    .period .arrow {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border: 1px solid #DDD;
+        background-color: #EEE;
+        cursor: pointer;
+    }
+
+        .period .arrow:hover {
+            color: red;
+        }
+
+        .period .arrow .iconfont {
+            font-size: 12px;
+            color:#615D5D;
+        }
+
+        .period .arrow.pre {
+            border-right: none;
+        }
+
+        .period .arrow.next {
+            border-left: none;
+        }
+
+    .period .perioddate {
+        margin-left: 20px;
+        /*display: inline-block;*/
+    }
+
+    .period .iptdate {
+        padding: 0 5px;
+        width: 160px;
+        /*height: 20px;
+        line-height: 20px;*/
+        border: 1px solid #ddd;
+        outline: none;
+        text-align: center;
+    }
+
+/*公用组件样式*/
+.dropdown {
+    line-height: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+    .dropdown .inputwrap {
+        height: 23px;
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown input {
+        /*width: 150px;*/
+        height: 23px;
+        outline: none;
+        padding: 0px 5px;
+        font-size: 12px;
+        border: 1px solid #ddd;
+        /*vertical-align: text-bottom;*/
+    }
+    .dropdown .arrow {
+        width: 18px;
+        font-size: 12px;
+        color: #8E8E8E;
+        text-align: center;
+        box-sizing: border-box;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        padding: 0;
+        cursor: pointer;
+        background-color: #eeeeee;
+
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAf0lEQVQoU5WRURGAMAxDGwdIwQIKOKT05mO1gAMkgAQchdtucGPsg+53eWnSQpwPTr34ATMbSG4AVFXP3kQzG0kagCVPiDGuIjIDmFqoiHeSGkJYn0g9qBUn81eHGkqfJB/nO+qn9A0VIMeoe3W3lCCSRyv+RPpzE/8d/rjWmgskQEnK+GqesAAAAABJRU5ErkJggg==");
+        background-position: center;
+    }
+        .dropdown .arrow:hover {
+            background-color:#ddd;
+        }
+.dropdown .options {
+    display: none;
+    max-width: 500px;
+    max-height: 300px;
+    overflow: auto;
+    position: absolute;
+    z-index: 10;
+    margin-top: -1px;
+    text-indent: 5px;
+    border: 1px solid #ddd;
+    box-sizing:border-box;
+    background-color: #fff;
+}
+.dropdown .options dd {
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    text-align: left;
+    word-wrap: break-word;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.dropdown .options dd:hover  {
+    background-color:#E4E4EC;
+}
+.dropdown .options dd.selected{
+    background-color:#FBE4C8;
+}
+    .dropdown .result {
+        display:none;
+    }
+    .dropdown .options dd.level2 {
+        display:none;
+        color: #827F7F;
+        text-indent: 1em;
+    }
+    .dropdown .options dd.level3 {
+        display:none;
+        text-indent: 2em;
+        color: #827F7F;
+    }
+    .dropdown .options dd.show {
+        display: block;
+    }
+    .dropdown .options dd.selected {
+        font-weight:bold;
+    }
+    .dropdown .options i {
+        width: 0;
+        height: 0;
+        line-height: 0;
+        border-style: solid;
+        border-width: 5px;
+        vertical-align: super;
+        font-size: 0;
+        border-color: transparent transparent transparent #7d7c7c;
+    }
+    .dropdown .options .btn-ok {
+        width:100%;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+        color:#fff;
+        cursor:pointer;
+        background-color:#EAAD96;
+    }
+    .dropdown i.down {
+        border-color: #7d7c7c transparent transparent transparent;
+        border-top-width: 6px;
+        vertical-align: middle;
+        margin-right: 2px;
+    }
+
+    .dropdown i.hit:hover {
+        color:green;
+    }
+
+.layui-layer-content, .layui-layer-page {
+    width: auto !important;
+    height: auto !important;
+    min-height: 24px;
+    margin: 0 20px;
+}
+.animshow {
+    transition: margin-top 1s;
+    -moz-transition: margin-top 1s;
+    -webkit-transition: margin-top 1s;
+    -o-transition: margin-top 1s;
+}

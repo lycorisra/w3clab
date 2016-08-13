@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 canvas绚丽宇宙星空背景特效jQuery插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+
+    <style type="text/css">
+        html, body, .starsky {
+            width: 100%;
+            height: 100%;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="starsky">
+    </div>
+    <script src="../../js/lib/jquery-2.1.3.js"></script>
+    <script src="jquery-starfield.js"></script>
+    <script>
+        $('body').starfield({
+            starDensity: 0.1,           // 设置星星的密度，默认为1
+            mouseScale: 1,              // 设置星星的密度，设置鼠标移动时，星星移动的速度，这个参数已经去掉
+            seedMovement: true,         // 设置星星是否移动
+            deltaX: 0.5,                // 设置星星X方向上移动的速度
+            deltaY: 0.3,                // 设置星星Y方向上移动的速度
+            sizes: [1.8, 2, 2.5]        // 设置星星随机大小
+        });
+    </script>
+</body>
+</html>

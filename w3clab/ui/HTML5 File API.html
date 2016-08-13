@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HTML5 File API</title>
+    <link href="../css/normalize.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            font: 400 14px / 1.62 'PT Sans', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            border-bottom: 1px dotted #ddd;
+            list-style: none;
+            padding: 5px;
+            height: 25px;
+            line-height: 25px;
+        }
+            .list-view li:hover {
+                background-color:#e6e6fa;
+            }
+        .main {
+            width:90%;
+            margin:10px auto;
+            /*border:1px solid #ddd;*/
+        }
+        section {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        span.H5Uploader-Wrapper {
+            position: relative;
+            display: inline-block;
+            width:100px;
+            height:30px;
+            overflow:hidden;
+            box-sizing:border-box;
+            color:#fff;
+            background: #3591df;
+            border: 1px solid #3591df;
+        }
+        .H5Uploader-Wrapper:hover {
+            background-color: #0584F1;
+        }
+        .H5Uploader {
+            position: absolute;
+            /*left: 0;*/
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .skin {
+            display: inline-block;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .file-drag-zone {
+            width:100%;
+            height:500px;
+            border:1px dotted #ddd;
+            padding: 5px;
+        }
+        .file-drop-tip {
+            display:inline-block;
+            width:100%;
+            font-size: 32px;
+            /*font-style:normal;*/
+            color:#ccc;
+        }
+        .file-list {
+            height:450px;
+        }
+        .file-list .list-header {
+            /*height:40px;
+            line-height:40px;*/
+            font-size: 14px;
+            /*padding:0 5px;*/
+            font-weight: bold;
+            color: #5A5858;
+            background-color: #E4E2E2;
+            border: 1px solid #ccc;
+        }
+        .file-list .list-view {    
+            height: 420px;
+            overflow-x:hidden;
+            overflow-y: auto;
+        }
+        .list-view li,.list-header li {
+                font-size: 0;
+                position:relative;
+        }
+        .file-list label {
+            display: inline-block;
+            height: 2em;
+            overflow: hidden;
+            font-size: 12px;
+            padding: 0 5px;
+            /*border:1px solid;*/
+        }
+        .file-list .title {
+            width:50%;
+        }
+        .file-list .time {
+            width:15%;
+        }
+        .file-list .type {
+            width:10%;
+        }
+        .file-list .size {
+            width:10%;
+        }
+        .progress {
+            width: 0;
+            background-color: #f0e68c;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0.5;
+            transition:width 1s;
+        }
+    </style>
+    <script src="../js/lib/jquery-2.1.3.js"></script>
+    <script src="../js/html5%20file%20API/H5Uploader.js"></script>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <h2>HTML5 File API</h2>
+        </header>
+        <section>
+            <h5>input file元素美化</h5>
+            <span class="H5Uploader-Wrapper">
+                <span class="skin">选择文件</span>
+                <input type="file" class="H5Uploader" />
+            </span>
+        </section>
+        <section>
+            <h5>1、常规上传，支持多个文件</h5>
+            <p>FileList 对象针对表单的 file 控件。当用户通过 file 控件选取文件后，这个控件的 files 属性值就是 FileList 对象。它在结构上类似于数组，包含用户选取的多个文件。如果 file 控件没有设置 multiple 属性，那么用户只能选择一个文件，FileList 对象也就只有一个元素了。</p>
+            <form id="multuploadform" action="../ajaxHandler/HttpHander.ashx" enctype="multipart/form-data" method="post" target="testframe">
+                <input id="multfileinput" type="file" multiple="multiple" name="files" />
+                <input id="multuploadbutton" type="button" value="upload" />
+            </form>
+            <script type="text/javascript">
+                var uploader = new H5Uploader({
+                    fileInput: multfileinput,
+                    btnUpload: multuploadbutton,
+                    uploadForm: multuploadform,
+
+                    onSelect: function (e) {
+                        console.log(e.target.files);
+                    },
+                    onComplete: function (data) {
+                        console.log(data);
+                    }
+                });
+            </script>
+        </section>
+    
+        <section>
+            <h5>2、拖拽上传</h5>
+            <p>除了用 file 控件，采用拖放方式，也可以得到 FileList 对象</p>
+            <form action="../ajaxHandler/HttpHander.ashx" enctype="multipart/form-data" method="post">
+                <div id="filecontainer" class="file-drag-zone">
+                    <i class="file-drop-tip">拖拽文件到这里...</i>
+                    <div class="file-list">
+                        <div class="list-header">
+                            <ul>
+                                <li>
+                                    <label class="title">文件名称</label>
+                                    <label class="time">修改日期</label>
+                                    <label class="type">文件类型</label>
+                                    <label class="size">文件大小</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-view">
+                            <ul>
+                                <li>
+                                    <label class="title">2016-7-19.txt</label>
+                                    <label class="time">Wed Jul 20 2016 10:44:08 GMT+0800 (中国标准时间)</label>
+                                    <label class="type">text/plain</label>
+                                    <label class="size">80k</label>
+                                    <p class="progress">s</p>
+                                </li>
+                                <li>
+                                    <label class="title">利用Http Handler实现防止盗链 - 小白.net - 博客园.mhtml</label>
+                                    <label class="time">Tue Mar 01 2016 11:10:28 GMT+0800 (中国标准时间)</label>
+                                    <label class="type">multipart/related</label>
+                                    <label class="size">262k</label>
+                                </li>
+                                <li>
+                                    <label class="title">Research endeavors - High DPI rendering on HTML5 canvas_ some problems and solutions.mhtml</label><label class="time">Thu May 05 2016 19:04:22 GMT+0800 (中国标准时间)</label><label class="type">multipart/related</label><label class="size">268k</label></li>
+                                <li>
+                                    <label class="title">Higher DPI graphics with HTML5 canvas - Stack Overflow.mhtml</label><label class="time">Thu May 05 2016 19:03:31 GMT+0800 (中国标准时间)</label><label class="type">multipart/related</label><label class="size">785k</label></li>
+                                <li>
+                                    <label class="title">High DPI Canvas - HTML5 Rocks.mhtml</label><label class="time">Thu May 05 2016 19:14:08 GMT+0800 (中国标准时间)</label><label class="type">multipart/related</label><label class="size">540k</label></li>
+                                <li>
+                                    <label class="title">HRMB02-JJ总部月度考勤台账（2015版）-201508.xlsx</label><label class="time">Thu Aug 27 2015 17:27:01 GMT+0800 (中国标准时间)</label><label class="type">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</label><label class="size">4612k</label></li>
+                                <li>
+                                    <label class="title">工作流改进时间计划.docx</label><label class="time">Thu May 07 2015 11:27:25 GMT+0800 (中国标准时间)</label><label class="type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</label><label class="size">13k</label></li>
+                                <li>
+                                    <label class="title">03-新员工试用期转正审批表.doc</label><label class="time">Thu Jul 23 2015 14:20:25 GMT+0800 (中国标准时间)</label><label class="type">application/msword</label><label class="size">165.5k</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <span class="H5Uploader-Wrapper">
+                    <span class="skin">选择文件</span>
+                    <input id="dragupload" type="file" class="H5Uploader" />
+                </span>
+                <input type="button" value="上 传" class="button" />
+            </form>
+            <script type="text/javascript">
+                var ipt = document.querySelector('#filecontainer');
+                ipt.ondragover = function () {
+                    return false;
+                }
+
+                ipt.ondrop = function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    e = e || window.event;
+
+                    var files = e.dataTransfer.files;
+                    var list = '';
+                    for (var i = 0, file; file = files[i]; i++) {
+                        list += ''.concat(
+                            '<li>',
+                                '<label class="title">' + file.name + '</label>',
+                                '<label class="time">' + file.lastModifiedDate + '</label>',
+                                '<label class="type">' + file.type + '</label>',
+                                '<label class="size">' + (file.size/1024).toFixed(0) + 'k</label>',
+                            '</li>'
+                        );
+                    }
+                    $('.list-view ul').append(list);
+                    //document.querySelector('.list-view ul').appendChild(document.createElement(list));
+                    console.log(files);
+                }
+
+                var uploader = new H5Uploader({
+                    //fileInput: largeFileInput,
+                    btnUpload: btnReadLargeFile,
+                    dragDrop:filecontainer,
+                    url: '../ajaxHandler/HttpHander.ashx',
+                    blob: true,
+
+                    onSelect: function (e) {
+                        console.log(e.target.files[0]);
+                    },
+                    onComplete: function (data) {
+                        console.log(data);
+                    },
+                    onProgress: function (percent) {
+                        $('.list-view .progress').width(percent * 100 + '%');
+                    }
+                });
+
+            </script>
+        </section>
+    
+        <section>
+            <h5>3、分段读取大文件，支持进度条</h5>
+            <p>除了用 file 控件，采用拖放方式，也可以得到 FileList 对象</p>
+            <div>
+                <input id="largeFileInput" type="file" multiple="multiple" name="files" />
+                <input id="btnReadLargeFile" type="submit" value="read" />
+            </div>
+            <script type="text/javascript">
+                var uploader = new H5Uploader({
+                    fileInput: largeFileInput,
+                    btnUpload: btnReadLargeFile,
+                    url: '../ajaxHandler/HttpHander.ashx',
+                    blob: true,
+
+                    onSelect: function (e) {
+                        console.log(e.target.files[0]);
+                    },
+                    onComplete: function (data) {
+                        console.log(data);
+                    },
+                    onProgress: function (percent) {
+                        $('.list-view .progress').width(percent * 100 + '%');
+                    }
+                });
+            </script>
+        </section>
+    </div>
+</body>
+</html>
