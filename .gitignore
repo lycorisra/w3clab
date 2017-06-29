@@ -1,6 +1,14 @@
-/.vs
-/w3clab/bin
-/w3clab/obj
-/w3clab/Properties
-/w3clab/bin/w3clab.pdb
-/w3clab/bin/w3clab.dll
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+/src/TV

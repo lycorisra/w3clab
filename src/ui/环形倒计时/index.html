@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+             .wrap{
+                 width:80%;
+             } 
+             .circle{
+                display: inline-block;
+                position: relative;
+                width: 200px;
+                height: 200px;
+                /*min-width: 200px;
+                min-height: 200px;*/
+                border-radius: 50%;
+                /* line-height: 60px; */
+                color: #fff;
+                background-color: #1B61DA;
+                text-align: center;
+                border: 20px solid #3dfe33;
+                box-sizing: border-box;
+             }
+             .circle .loop{
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                border: 20px solid #dae525;
+                background-color: transparent;
+                box-sizing: border-box;
+             }
+             .circle .loop:first-of-type{
+                z-index: 2;
+                clip: rect(0 100px 200px 0);
+                transform: rotate(-30deg);
+             }
+            .circle .loop:last-of-type{
+                z-index: 2;
+                clip: rect(0 200px 200px 100px);
+             }
+             .half-circle{
+                width: 200px;
+                height: 100px;
+                box-sizing: border-box;
+                border: 20px solid #ddd;
+                border-radius: 100px 100px 0 0;
+                background-color: red;
+             }
+        </style>
+</head>
+
+<body>
+    <div class="circle">
+        <h2 class="label">使用中</h2>
+        <div class="loop"></div>
+        <div class="loop"></div>
+    </div>
+    <div class="half-circle"></div>
+
+    <script src="../../js/lib/jquery-2.1.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        ; (function ($, window, undefined) {
+            var _timer = function (option) {
+                //CircleTimer.call(this);
+                this.radius = option.radius || 200;
+                this.time = option.time;
+                this.label = option.label || '';
+                this.loopsize = option.loopsize || 20;
+                this.container = option.el || 'body';
+
+                this.$circle = $(''.concat(
+                    '<div class="circle">',
+                        '<h2 class="label">使用中</h2>',
+                        '<div class="loop left"></div>',
+                        '<div class="loop right"></div>',
+                    '</div>'
+                )).appendTo(this.container);
+                this.$loops = $('.loop', this.$circle);
+                this.$label = $('.label',this.$circle);
+            }
+            _timer.prototype.init = function () {
+                var self = this,
+                    width = height = self.radius + 'px',
+                    top = left = (0 - self.loopsize) + 'px';
+
+                self.$circle.css({
+                    width: width,
+                    height: height
+                });
+                self.$loops.css({
+                    width: width,
+                    height: height,
+                    top: top,
+                    left: left,
+                    borderWidth: self.loopsize
+                });
+                self.$loops.eq(0).css({
+                    clip: 'rect(0 ' + self.radius / 2 + 'px ' + self.radius + 'px '+ '0)'
+                });
+                self.$loops.eq(1).css({
+                    clip: 'rect(0 ' + self.radius + 'px ' + self.radius + 'px ' + self.radius / 2 + 'px ' +')'
+                });
+                self.$label.html(self.label);
+            };
+            _timer.prototype.run = function () {
+                var self = this;
+                self.init();
+            };
+
+            $.fn.CircleTimer = function (option) {
+                option.el = this;
+                var timer = new _timer(option);
+                timer.run();
+                return $.extend({}, this, { run: timer.run });
+            };
+        })(jQuery, window);
+
+        var count = 0,
+            el = 'body',
+            width = Math.min(this.innerHeight, this.innerWidth),
+            radius = Math.floor((width / count) - 20);
+
+        var instances = [];
+        for (var i = 0; i < count; i++) {
+            var timer = $('body').CircleTimer({
+                radius: radius,
+                time: new Date().getTime(),
+                label: '计时器' + i
+            });
+            instances.push(timer);
+        }
+    </script>
+</body>
+
+</html>

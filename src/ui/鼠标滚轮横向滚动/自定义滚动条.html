@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自定义滚动条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            height: 2000px;
+        }
+        /*common*/
+        .scroll {
+            width: 500px;
+            height: 500px;
+            border: 1px #000 solid;
+            float: left;
+            display: inline;
+            margin-right: 20px;
+            overflow: hidden;
+            zoom: 1;
+        }
+
+            .scroll .sBar, .scroll .main {
+                position: relative;
+                overflow: hidden;
+            }
+
+                .scroll .sBar span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    cursor: pointer;
+                }
+
+            .scroll .cont {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        .scrollA .sBar {
+            height: 30px;
+            background: #000;
+        }
+
+            .scrollA .sBar span {
+                width: 40px;
+                height: 30px;
+                background: #f00;
+            }
+
+        .scrollA .main {
+            margin-top: 20px;
+            height: 450px;
+            background: #ccc;
+        }
+
+        .scrollA .cont {
+            width: 500px;
+            line-height: 32px;
+        }
+
+        .scrollB .sBar {
+            height: 500px;
+            width: 30px;
+            background: #000;
+            height: 500px;
+            float: left;
+            margin-right: 20px;
+            display: inline;
+        }
+
+            .scrollB .sBar span {
+                width: 30px;
+                height: 40px;
+                background: #f00;
+            }
+
+        .scrollB .main {
+            width: 450px;
+            background: #ccc;
+            float: left;
+            height: 500px;
+        }
+
+        .scrollB .cont {
+            width: 450px;
+            line-height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scroll" class="scroll scrollA">
+        <div class="sBar">
+            <span></span>
+        </div>
+
+        <div class="main">
+            <div class="cont">
+                <p>SEO全称：Search Engine Optimization，即搜索引擎优化。是指为了从搜索引擎中获得更多的免费流量，从网站结构、内容建设方案、用户互动传播、页面等角度进行合理规划，使网站更适合搜索引擎的检索原则的行为。</p>
+                <p>使网站更适合搜索引擎的检索原则又被称为对搜索引擎友好，对搜索引擎友好不仅能够提高SEO的效果，还能提高用户体验，因为这样会使搜索引擎中显示的网站相关信息对用户来说更有吸引力。为了说明什么是网站对搜索引擎友好，我们不妨看看对搜索引擎不友好的网站有哪些特征：</p>
+                <p>1、网页中大量采用图片或者Flash等富媒体（Rich Media）形式，没有可以检索的文本信息，而SEO最基本的就是文章SEO和图片SEO；</p>
+                <p>2、网页没有标题，或者标题中没有包含有效的关键词；</p>
+                <p>3、网页正文中有效关键词比较少（一般小于整文章2%~8%）；</p>
+                <p>4、网站导航系统让搜索引擎“看不懂”；</p>
+                <p>5、大量动态网页让搜索引擎无法检索；</p>
+                <p>6、没有被其他已经被搜索引擎收录的网站提供的链接；</p>
+                <p>7、网站中充斥大量欺骗搜索引擎的垃圾信息，如“过渡页”、“桥页”、颜色与背景色相同的文字；</p>
+                <p>8、网站中缺少原创的内容，完全照搬硬抄别人的内容等。</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="scroll2" class="scroll scrollB">
+        <div class="sBar">
+            <span></span>
+        </div>
+
+        <div class="main">
+            <div class="cont">
+                <p>SEO全称：Search Engine Optimization，即搜索引擎优化。是指为了从搜索引擎中获得更多的免费流量，从网站结构、内容建设方案、用户互动传播、页面等角度进行合理规划，使网站更适合搜索引擎的检索原则的行为。</p>
+                <p>使网站更适合搜索引擎的检索原则又被称为对搜索引擎友好，对搜索引擎友好不仅能够提高SEO的效果，还能提高用户体验，因为这样会使搜索引擎中显示的网站相关信息对用户来说更有吸引力。为了说明什么是网站对搜索引擎友好，我们不妨看看对搜索引擎不友好的网站有哪些特征：</p>
+                <p>1、网页中大量采用图片或者Flash等富媒体（Rich Media）形式，没有可以检索的文本信息，而SEO最基本的就是文章SEO和图片SEO；</p>
+                <p>2、网页没有标题，或者标题中没有包含有效的关键词；</p>
+                <p>3、网页正文中有效关键词比较少（一般小于整文章2%~8%）；</p>
+                <p>4、网站导航系统让搜索引擎“看不懂”；</p>
+                <p>5、大量动态网页让搜索引擎无法检索；</p>
+                <p>6、没有被其他已经被搜索引擎收录的网站提供的链接；</p>
+                <p>7、网站中充斥大量欺骗搜索引擎的垃圾信息，如“过渡页”、“桥页”、颜色与背景色相同的文字；</p>
+                <p>8、网站中缺少原创的内容，完全照搬硬抄别人的内容等。</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function getByClass(oParent, sClass) {
+            var aEle = oParent.getElementsByTagName('*');
+            var arr = [];
+            var reg = new RegExp('\\b' + sClass + '\\b', 'i');
+
+            for (var i = 0; i < aEle.length; i++) {
+                if (reg.test(aEle[i].className)) {
+                    arr.push(aEle[i]);
+                }
+            }
+
+            return arr;
+        }
+
+        //加鼠标滚轮
+        function addMouseWheel(obj, fn) {
+            obj.onmousewheel = fnWheel;
+            if (obj.addEventListener) obj.addEventListener('DOMMouseScroll', fnWheel, false);
+
+            function fnWheel(e) {
+                var oEvent = e || event;
+                var d = oEvent.wheelDelta ? oEvent.wheelDelta > 0 : oEvent.detail < 0;
+
+                fn(d);
+
+                if (oEvent.preventDefault) oEvent.preventDefault();
+
+                return false;
+            }
+        }
+
+        function scrollBar(obj, direction) {
+            var oSbar = getByClass(obj, 'sBar')[0];
+            var oSbtn = oSbar.children[0];
+
+            var oMain = getByClass(obj, 'main')[0];
+            var oCont = getByClass(obj, 'cont')[0];
+
+            //拖拽
+            oSbtn.onmousedown = function (e) {
+                var oEvent = e || event;
+
+                var disX = oEvent.clientX - oSbtn.offsetLeft;
+                var disY = oEvent.clientY - oSbtn.offsetTop;
+
+                function fnMove(e) {
+                    var oEvent = e || event;
+                    switch (direction) {
+                        case 'l':
+                            var l = oEvent.clientX - disX;
+                            setDirection({ left: l });
+                            break;
+
+                        case 't':
+                            var t = oEvent.clientY - disY;
+                            setDirection({ down: t });
+                            break;
+                    }
+                }
+
+                function fnUp() {
+                    this.onmousemove = null;
+                    this.onmouseup = null;
+
+                    if (oSbar.releaseCapture) oSbar.releaseCapture();
+                }
+
+                if (oSbar.setCapture) {
+                    oSbar.onmousemove = fnMove;
+                    oSbar.onmouseup = fnUp;
+                    oSbar.setCapture();
+                } else {
+                    document.onmousemove = fnMove;
+                    document.onmouseup = fnUp;
+                }
+
+                return false;
+            };
+
+            //判断滚动距离
+            function setDirection(json) {
+                if (!isNaN(json.down)) {
+                    if (json.down <= 0) {
+                        json.down = 0;
+                    } else if (json.down > oSbar.offsetHeight - oSbtn.offsetHeight) {
+                        json.down = oSbar.offsetHeight - oSbtn.offsetHeight;
+                    }
+                    oSbtn.style.top = json.down + 'px';
+
+                    var scale = json.down / (oSbar.offsetHeight - oSbtn.offsetHeight);
+                } else {
+                    if (json.left <= 0) {
+                        json.left = 0;
+                    } else if (json.left > oSbar.offsetWidth - oSbtn.offsetWidth) {
+                        json.left = oSbar.offsetWidth - oSbtn.offsetWidth;
+                    }
+                    oSbtn.style.left = json.left + 'px';
+
+                    var scale = json.left / (oSbar.offsetWidth - oSbtn.offsetWidth);
+                }
+                oCont.style.top = -(oCont.offsetHeight - oMain.offsetHeight) * scale + 'px';
+            }
+
+            //加鼠标滚轮
+            switch (direction) {
+                case 'l':
+                    addMouseWheel(obj, function (d) {
+                        var mouseX = 0;
+
+                        if (d) {
+                            mouseX = oSbtn.offsetLeft - 10;
+                        } else {
+                            mouseX = oSbtn.offsetLeft + 10;
+                        }
+
+                        setDirection({ left: mouseX });
+                    });
+
+                    //算滑块大小
+                    var oBtnW = oMain.offsetHeight / oCont.offsetHeight * oSbar.offsetWidth;
+
+                    if (oBtnW < 50) oBtnW = 50;
+                    if (oBtnW > 100) oBtnW = 100;
+
+                    oSbtn.style.width = oBtnW + 'px';
+                    break;
+                case 't':
+                    addMouseWheel(obj, function (d) {
+                        var mouseY = 0;
+
+                        if (d) {
+                            mouseY = oSbtn.offsetTop - 10;
+                        } else {
+                            mouseY = oSbtn.offsetTop + 10;
+                        }
+
+                        setDirection({ down: mouseY });
+                    });
+
+                    //算滑块大小
+                    var oBtnH = oMain.offsetHeight / oCont.offsetHeight * oSbar.offsetHeight;
+
+                    if (oBtnH < 50) oBtnH = 50;
+                    if (oBtnH > 100) oBtnH = 100;
+
+                    oSbtn.style.height = oBtnH + 'px';
+                    break;
+            }
+        }
+
+        var oDiv = document.getElementById('scroll');
+        var oDiv2 = document.getElementById('scroll2');
+
+        scrollBar(oDiv, 'l');
+        scrollBar(oDiv2, 't');
+    </script>
+</body>
+</html>
