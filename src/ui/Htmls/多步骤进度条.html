@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>try it</title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.steps{
+		position: relative;
+		width:600px;
+		height:30px;
+		margin:20px auto;
+	}
+	.steps ul li { 
+		height:30px;
+		width:100px;
+		list-style:none;
+		float:left; 
+		text-align:center; 
+		font-weight:bold;
+	} 
+	.steps ul li.done { 
+		background-color:#FFEDA2;
+	} 
+	.steps ul li.undone { 
+		background-color:#ccc;
+	}
+	.steps ul .start{
+		line-height:30px;
+	}
+	.steps ul .step{
+		height:0px;
+		line-height:0px;
+		border-style: solid;
+		border-width: 15px 0 15px 15px;
+    	border-color: transparent transparent transparent white;
+		margin-left:2px;
+	}
+	.steps ul .arrow{
+		height:0px;
+		line-height:0px;
+		position:absolute;
+		z-index:99999;
+		border-style: solid;
+		border-width: 15px 0 15px 15px;
+    	border-color: transparent transparent transparent #FFEDA2;
+	}
+	.steps ul .arrow1{
+		left:100px;
+	}
+	.steps ul .arrow2{
+		left:202px;
+	}
+	.steps ul .arrow3{
+		left:304px;
+	}
+	.steps ul .arrow4{
+		left:406px;
+    	border-color: transparent transparent transparent #ccc;
+	}
+</style>
+</head>
+<body>
+   <div class="steps"> 
+		<ul> 
+			<li class="start done">第一步</li> 
+			<li class="arrow arrow1"></li>
+			<li class="done second step">第二步</li> 
+			<li class="arrow arrow2"></li>
+			<li class="done third step">第三步</li> 
+			<li class="arrow arrow3"></li>
+			<li class="undone fourth step">第四步</li> 
+			<li class="arrow arrow4"></li>
+			<li class="undone fifth step">第五步</li> 
+		</ul> 
+	</div> 
+</body>
+</html>

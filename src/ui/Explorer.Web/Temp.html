@@ -1,0 +1,281 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <link rel="icon" href="/favicon-16.ico" sizes="16x16">
+    <link rel="icon" href="/favicon-32.ico" sizes="32x32">
+
+
+    <title>360云盘 - 我的云盘</title>
+    <script>var G_start_time = new Date;</script>
+
+    <!--[if (lt IE 8.0)]><link type="text/css" rel="stylesheet" href="http://s8.qhimg.com/static/c5b70329fad6c2f2/my.src.css"><![endif]--><!--[if (!IE)|(gte IE 8.0)]><!-->
+    <link type="text/css" rel="stylesheet" href="http://s7.qhimg.com/static/218f4af2eb5160d9/my.src_datauri.css"><!--<![endif]-->
+    <!--<link type="text/css" rel="stylesheet" href="http://s7.qhimg.com/static/630be5a2853b7dec/file/myapp.src_datauri.css">--><!--<![endif]-->
+
+</head>
+
+<body>
+    <div class="panel panel-t1" id="BasePanel1" style="display: none;"><div class="panel-content" remark="oContent"><div class="hd"><h3>上传文件到360云盘</h3></div><div class="bd"><div id="uploadPanel"> <div class="upload-toolbar clearfix"> <div class="upload-btns"> <div class="pl-select-file"> <span class="pl-select-file-btn"></span></div> <div class="pl-select-menu select-menu"> <a class="file-select" href="###" onclick="return false">添加文件</a> <a class="folder-select" href="###" onclick="return false">添加文件夹</a></div> <div class="jx-select-file"> <span class="jx-select-file-btn"><input title="请选择要上传的文件" id="YPUpload-2" class="file-select-proxy" type="file" multiple=""></span></div> <div class="jx-select-menu select-menu"> <a class="file-select" href="javascript:;">添加文件<input title="请选择要上传的文件" id="YPUpload-3" class="file-select-proxy" type="file" multiple=""></a> <a class="folder-select" href="javascript:;">添加文件夹<input title="请选择要上传的文件夹" id="YPUpload-4" class="folder-select-proxy" type="file" webkitdirectory="" multiple=""></a></div> <div class="fl-select-file-box"> <button class="fl-select-file"></button></div></div> <div class="uploadDeny" style="display:none">不可上传至当前目录，可上传至“<span>全部文件</span>”中及其子文件</div> <div class="uploadPath">到：<span id="curUploadPath"></span></div> <div class="warning-note"><a data-placement="bottom right" href="###" onclick="return false">上传须知</a></div></div> <div class="network-abnormal-tip" style="display:none;">网络异常，上传暂停。请检查您的网络</div> <div class="upload-list-box"> <div class="drag-tip" style=""><h1>试试将电脑里的文件拖拽到此上传</h1><p>（您的浏览器支持此拖拽功能）</p></div> <ul id="uploadItemList" class="upload-list"> </ul></div> </div></div><div class="ft"><div class="upload-tips"><p><a target="_blank" href="http://down.360safe.com/yunpan/360wangpan_setup.exe">安装PC客户端</a>，支持文件秒传、断点续传</p></div><span class="y-btn y-btn-gray" id="uploadStatusBtn">完成</span></div></div><span class="minimize"><a href="#" onclick="return false;" class="minimize-link"><span>关闭</span></a></span><span class="close"><a href="#" onclick="return false;" class="close-link"><span>关闭</span></a></span></div><div class="returnToTop"><div id="rtt" style="visibility: hidden; bottom: 70px; right: 30px;"></div></div>
+
+
+    <div id="doc">
+        <div id="topPanel" class="header clearfix"><a id="logo" class="logo" href="/my" title="云盘首页"></a><ul class="nav-bar clearfix"><li class="tab-file first current"><a class="pan" href="/my" onclick="return false;" title="最安全的网络U盘">我的文件</a></li><li class=""><a class="my-photo current" data-tab="xiangce" href="http://photo.yunpan.360.cn/" title="云相册">云相册</a></li><li><a class="collect" href="http://se.yunpan.360.cn" title="从浏览器保存的内容">云收藏</a></li><li><a class="more" href="https://qita.yun.360.cn" title="更多云服务">更多</a></li></ul><a style="float:left;line-height:55px;color:#fecf15;font-size:12px;" href="http://itunes.apple.com/cn/app/360yun-pan/id508401605?mt=8" target="_blank">全新改版的iPhone版云盘发布！前去更新！</a><div class="top-bar-r heigher"><div class="user-info-wrap"><div class="user-name"><a id="tpUserInfo" href="###" onclick="return false;" title="1258613428@qq.com"><span class="avatar-mask"></span><img class="avatar" src="http://u1.qhimg.com/qhimg/quc/110_110/22/02/55/220255dq9816.e58794.jpg" width="32" height="32" alt=""><span class="name-box"><span class="text">1258613428@qq.com</span></span></a></div><div id="userInfo" class="lottery-ing"><ul class="menu menu-user-info"><li><a id="profile" href="/my?p=profile"> <i class="icon profile"></i><span class="text">帐号中心</span></a></li><li><a href="/userAuth" target="_blank"><i class="icon auth"></i><span class="text">申请个人认证</span></a></li><li class="message"><a id="saveMessage" href="/my?p=notice"> <i class="icon message"></i><span class="text">云盘消息 <em>99+</em></span></a></li><li><a id="ypLevel" href="/my?p=level"><i class="icon yp-level"></i><span class="text">云盘等级</span></a></li><li><a id="volRecords" href="/my?p=records"><i class="icon vol-records"></i><span class="text">扩容记录</span></a></li><li><a id="recharge" href="/my?p=pay"><i class="icon recharge"></i><span class="text">空间升级卡</span></a></li><!--<li><a id="inviteFri" href="/my?p=invite"><i class="icon invite"></i><span class="text">邀请好友</span></a></li>--><li><a id="tpFeedback" href="http://bbs.360safe.com/forum.php?mod=forumdisplay&amp;fid=126" target="_blank"><i class="icon feedback"></i><span class="text">意见反馈</span></a></li><li><a id="tpHelp" href="/index/help" target="_blank"><i class="icon help"></i><span class="text">帮助中心</span></a></li><li><a id="lottery-everyday" href="/my?p=signin"><i class="icon icon-lottery"></i><span class="text">每日抽奖</span></a></li><li><a id="tpDynamic" href="http://yunpan.360.cn/my/?p=dynamic"><i class="icon icon-dynamic"></i><span class="text">操作历史</span></a></li><li><a id="complain" href="/my/complain"><i class="icon icon-complain"></i><span class="text">我要申诉</span></a></li><li class="loginout"><a class="exit" id="tpExit" href="/user/logout"><i class="icon logout"></i><span class="text">退出云盘</span></a></li></ul></div></div></div></div>
+        <div id="leftPanel" style="height: 327px;">
+
+            <div class="nav" style="height: 252px;">
+                <!-- <h2 class="title">从浏览器保存的内容</h2> -->
+                <ul>
+                    <li class="tab-file clearfix current" data-tab="file">
+                        <a tabindex="1">
+                            <i class="icon icon-file"></i>
+                            <span class="text">所有文件</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-video clearfix" data-tab="video">
+                        <a tabindex="1">
+                            <i class="icon icon-video"></i>
+                            <span class="text">视频</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-music clearfix" data-tab="music">
+                        <a tabindex="1">
+                            <i class="icon icon-music"></i>
+                            <span class="text">音乐</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-text clearfix" data-tab="text">
+                        <a tabindex="1">
+                            <i class="icon icon-text"></i>
+                            <span class="text">文档</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-img clearfix" data-tab="img">
+                        <a tabindex="1" href="http://photo.yunpan.360.cn/">
+                            <i class="icon icon-img"></i>
+                            <span class="text">图片</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-link clearfix" data-tab="link">
+                        <a tabindex="1">
+                            <i class="icon icon-link"></i>
+                            <span class="text">我的分享</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-sFile clearfix" data-tab="sFile">
+                        <a tabindex="1">
+                            <i class="icon icon-sFile"></i>
+                            <span class="text">保险箱</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-inbox clearfix" data-tab="inbox">
+                        <a tabindex="1" href="/my/inbox">
+                            <i class="icon icon-inbox"></i>
+                            <span class="text">收件箱</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-recycle clearfix" data-tab="recycle">
+                        <a tabindex="1">
+                            <i class="icon icon-recycle"></i>
+                            <span class="text">回收站</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-group clearfix" data-tab="group">
+                        <a tabindex="1" href="http://qun.yunpan.360.cn" target="_blank">
+                            <i class="icon icon-group"></i>
+                            <span class="text">共享群</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-box" style="display: block;">
+                <span class="progress">
+                    <span class="progress-used" style="width: 24%;"></span>
+                </span>
+                <div class="space-content clearfix">
+                    <span class="space-desc">5.71GB/23.00GB</span>
+                    <!--
+                        <a tabindex="1" href="/my?p=task" class="update-space">扩容</a>
+                    -->
+                </div>
+            </div>
+
+            <div class="copyright-protect">
+                <a href="http://www.360.cn/about/banquanshengming.html" target="_blank">版权保护投诉指引</a>
+            </div>
+        </div>
+        <div id="groupMore" style="display:none" class="group-list">
+            <ul></ul>
+        </div>
+
+        <div id="mainPanel">
+            <div id="mainTabs" style="display: block;">
+                <div class="real-search-bar search-bar search-none" style="">
+                    <div class="search-input-ctn">
+                        <label class="search-placeholder" style="display: none;">搜索我的文件</label>
+                        <input class="search-input search-text" placeholder="搜索我的文件" data-placeholder="搜索我的文件">
+                        <i class="icon icon-close ss-close"></i>
+                    </div>
+                    <span class="y-btn y-btn-gray y-btn-submit"><i class="icon icon-search"></i></span>
+                </div>
+                <div id="pluginTip" style="display:none;" class="clearfix"><span>新！支持云加速上传啦！支持极速秒传、大文件上传、断点续传哦~</span><a class="download" href="###" onclick="return false;">安装云加速控件</a><a class="close" href="###" onclick="return false;"></a><div class="tip-tri"></div></div>
+                <div id="pluginSetupSuccess" class="tip" style="display:none;">上传控件安装成功，快来体验吧！<span class="arrow"></span></div>
+                <div id="toolbar" class="cmd-panel">
+                    <div class="btn-group btns-filelist" style=""><!-- <div class="item"><span id="tbBack" class="y-btn-back y-btn-back-disable back" data-cn="back" title="返回上级目录">返回</span></div> --><div class="item"><span id="tbUpload" class="y-btn y-btn-blue upload show" data-cn="upload"><i class="icon icon-upload"></i><span class="label">上传</span></span></div><div class="item"><span id="tbNew" class="y-btn y-btn-gray new show" data-cn="new"><i class="icon icon-new"></i><span class="label">新建文件夹</span></span><!--<span id="tbOffline" class="y-btn y-btn-gray offline" data-cn="offline"><i class="icon icon-offline"></i><span class="label">离线下载</span></span>--></div><div class="item"><span id="tbDl" class="y-btn y-btn-gray dl" data-cn="dl"><i class="icon icon-download"></i><span class="label">下载</span></span><span id="tbPackDl" class="y-btn y-btn-gray pack-dl" data-cn="pack-dl"><i class="icon icon-download"></i><span class="label">下载</span></span><span id="tbDel" class="y-btn y-btn-gray del" data-cn="del"><i class="icon icon-delete"></i><span class="label">删除</span></span><span id="tbLink" class="y-btn y-btn-gray link" data-cn="link"><i class="icon icon-share"></i><span class="label">分享</span></span><span id="tbLinkBatch" class="y-btn y-btn-gray link-batch" data-cn="link-batch"><i class="icon icon-share"></i><span class="label">分享</span></span><span id="tbMore" class="y-btn y-btn-gray more y-btn-more" data-cn="more"><span class="label">更多</span><i class="caset"></i></span></div></div><div class="btn-group btns-sfilelist btns-toolbar" style="display: none;"><div class="item"><span id="tbUpload" class="y-btn y-btn-blue upload show" data-cn="upload"><i class="icon icon-upload"></i><span class="label">上传</span></span></div><div class="item"><span id="tbNew" class="y-btn y-btn-gray new show" data-cn="new"><i class="icon icon-new"></i><span class="label">新建文件夹</span></span></div><div class="item"><span id="tbDl" class="y-btn y-btn-gray dl" data-cn="dl"><i class="icon icon-download"></i><span class="label">下载</span></span><span id="tbPackDl" class="y-btn y-btn-gray pack-dl show" data-cn="pack-dl"><i class="icon icon-download"></i><span class="label">下载</span></span><span id="tbDel" class="y-btn y-btn-gray del show" data-cn="del"><i class="icon icon-delete"></i><span class="label">删除</span></span><span id="tdMoveOut" class="y-btn y-btn-gray moveoutsfile" data-cn="moveoutsfile"><i class="icon icon-moveoutsfile"></i><span class="label">转出文件保险箱</span></span><span id="tbMore" class="y-btn y-btn-gray more y-btn-more show" data-cn="more"><span class="label">更多</span><i class="caset"></i></span></div><div class="item"><span id="tbLockSfile" class="y-btn y-btn-gray locksfile" data-cn="locksfile"><i class="icon icon-locksfile"></i><span class="label">立即锁上保险箱</span></span></div></div><div class="btn-group btns-link" style="display: none;"><div class="item"><span id="tbLinkView" class="y-btn y-btn-gray y-btn-disable link-view" data-cn="link-view"><i class="icon icon-link-view"></i><span class="label">查看分享链接</span></span><span id="tbLinkDel" class="y-btn y-btn-gray y-btn-disable link-del" data-cn="link-del"><i class="icon icon-link-del"></i><span class="label">取消分享</span></span><span id="tbExtractOn" class="y-btn y-btn-gray extract-on" data-cn="extract-on"><i class="icon icon-extract-on"></i><span class="label">启用提取码</span></span><span id="tbExtractOff" class="y-btn y-btn-gray extract-off" data-cn="extract-off"><i class="icon icon-extract-off"></i><span class="label">取消提取码</span></span><span id="tbLinkCopy" class="y-btn y-btn-gray y-btn-disable link-copy" data-cn="link-copy"><i class="icon icon-link-copy"></i><span class="label">复制分享链接</span></span></div><!--  <p class="share-top-tip">为配合有关部门的“扫黄打非”净网行动，云盘分享功能临时调整。<a href="http://bbs.360safe.com/thread-4209633-1-1.html" target="_blank">查看详情</a><span class="close" onclick="W('.share-top-tip').hide();">&#215;</span></p> --></div><div class="btn-group btns-recycle" style="display: none;"><div class="item"><span id="tbRestore" class="y-btn y-btn-gray y-btn-disable restore show" data-cn="restore"><i class="icon icon-restore"></i><span class="label">还原文件</span></span><span id="tbDisdel" class="y-btn y-btn-gray y-btn-disable diskdel show" data-cn="diskdel" style="width: 60px;"><i class="icon icon-diskdel"></i><span class="label">删除</span></span></div><div class="item"><span id="tbClearall" class="y-btn y-btn-gray clearall show y-btn-disable" data-cn="clearall"><i class="icon icon-clearall"></i><span class="label">清空回收站</span></span><span id="tbOpenPassword" class="y-btn y-btn-gray openpass" data-cn="openpass" style="display: inline;"><i class="icon icon-recycleopenpass"></i><span class="label">对回收站启用云盘安全密码</span></span><span id="tbOpenPasswordDone" class="y-btn y-btn-gray openpassdone" data-cn="openpassdone" style="display: none;"><i class="icon icon-recyleopenpassdone"></i><span class="label">回收站云盘安全密码启用中</span></span></div></div><div class="btn-group btns-hisfile" style="display: none;"><div class="item"><span id="tbHisReFile" title="还原到选中版本" class="y-btn y-btn-gray his-restore" data-cn="his-view"><i class="icon icon-his-restore"></i><span class="label">穿越到选中时光号</span></span><span id="tbHisView" class="y-btn y-btn-gray his-view" data-cn="his-view"><i class="icon icon-link-view"></i><span class="label">在线查看</span></span><a id="tbHisViewPic" target="_blank" class="y-btn y-btn-gray his-view" href="###" style="display:none"><i class="icon icon-link-view"></i><span class="label">在线查看</span></a><span id="tbHisDl" class="y-btn y-btn-gray his-dl" data-cn="his-dl"><i class="icon icon-download"></i><span class="label">下载</span></span></div></div><div class="mini-upload" title="上传文件"><span class="mini-bg"></span><span class="mini-info"><span class="per"></span><span class="upfile"></span></span></div><div class="display-mode"><a id="tbText" title="切换到列表视图" href="###" onclick="return false;" data-cn="text" class="cmd text">列表视图</a><a id="tbPic" title="切换到大图视图" href="###" onclick="return false;" data-cn="pic" class="cmd pic pic-cur">大图标视图</a></div><div class="sort"><h2><span class="text">排序：</span><a href="###" onclick="return false;" class="name asc" data-field="name" data-order="asc"><i class="icon"></i>文件名</a></h2><ul><li style=""><a href="###" onclick="return false;" class="name asc" data-field="name" data-order="asc"><i class="icon"></i>文件名</a></li><li style=""><a href="###" onclick="return false;" class="fsize asc" data-field="fsize" data-order="asc"><i class="icon"></i>大小</a></li><li style="display: none;"><a href="###" onclick="return false;" class="del-date desc" data-field="mtime" data-order="desc"><i class="icon"></i>删除日期</a></li><li style=""><a href="###" onclick="return false;" class="new-upload desc" data-field="mtime" data-order="desc"><i class="icon"></i>最近上传</a></li><li style=""><a href="###" onclick="return false;" class="fmtime desc" data-field="fmtime" data-order="desc"><i class="icon"></i>修改日期</a></li><li style="display: none;"><a href="###" onclick="return false;" class="share-date desc" data-field="mtime" data-order="desc"><i class="icon"></i>日期</a></li></ul></div>
+                </div>
+
+                <div id="crumb" class="cmd-panel"><div class="crumb-path" style="width: 931px;"><span class="first-item last-item path-item" data-index="-1" title="所有文件" style="max-width: 96%;">所有文件</span></div></div>
+
+                <div id="fileList" class="file-list-box clearfix file-tab" data-tab="file-tab">
+                    <div id="fileListHead" class="file-list-head clearfix" style="margin-right: 17px; display: none;"><div class="column column-checkbox"><label class="chkall"></label></div><div class="column column-name"><span class="file-sort" data-field="name">文件名<span class="arrow_u"></span></span></div><div class="column column-size"><span class="file-sort" data-field="fsize">大小<span class=""></span></span></div><div class="column column-time"><span class="file-sort" data-field="fmtime">修改日期<span class=""></span></span></div></div>
+                    <div id="fileListMain" style="height: 227px;">
+                        <div id="listHolder" class="clearfix" style="height: 306px;">
+                            <ul id="list" class="file-list clearfix ico-list">
+                                <li class="row filelist-item clearfix " data-nid="1338121090150008" data-type="folder" data-title="Image" data-link="" data-url="" data-shorturl="" data-date="2012-05-27 13:08" data-password="" data-path="/Image/" f-index="0">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="Image
+创建时间: 2012-05-27 13:08"><span class="ico ico-folder"></span><span class="text">Image</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-27 13:08</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338089513154885" data-type="folder" data-title="qq记录" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 20:54" data-password="" data-path="/qq记录/" f-index="1">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="qq记录
+创建时间: 2012-05-26 20:54"><span class="ico ico-folder"></span><span class="text">qq记录</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 20:54</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338100499153396" data-type="folder" data-title="谷歌书签" data-link="" data-url="" data-shorturl="" data-date="2012-05-27 14:34" data-password="" data-path="/谷歌书签/" f-index="2">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="谷歌书签
+创建时间: 2012-05-27 14:34"><span class="ico ico-folder"></span><span class="text">谷歌书签</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-27 14:34</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338099874156735" data-type="folder" data-title="谷歌下载" data-link="" data-url="" data-shorturl="" data-date="2012-05-27 14:24" data-password="" data-path="/谷歌下载/" f-index="3">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="谷歌下载
+创建时间: 2012-05-27 14:24"><span class="ico ico-folder"></span><span class="text">谷歌下载</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-27 14:24</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338024678153178" data-type="folder" data-title="视频" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 17:31" data-password="" data-path="/视频/" f-index="4">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="视频
+创建时间: 2012-05-26 17:31"><span class="ico ico-videofolder"></span><span class="text">视频</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 17:31</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338024678153183" data-type="folder" data-title="书籍" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 17:31" data-password="" data-path="/书籍/" f-index="5">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="书籍
+创建时间: 2012-05-26 17:31"><span class="ico ico-bookfolder"></span><span class="text">书籍</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 17:31</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338024678153173" data-type="folder" data-title="图片" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 17:31" data-password="" data-path="/图片/" f-index="6">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="图片
+创建时间: 2012-05-26 17:31"><span class="ico ico-picturefolder"></span><span class="text">图片</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 17:31</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338089611156609" data-type="folder" data-title="我的文档" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 20:53" data-password="" data-path="/我的文档/" f-index="7">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="我的文档
+创建时间: 2012-05-26 20:53"><span class="ico ico-folder"></span><span class="text">我的文档</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 20:53</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338098949157123" data-type="folder" data-title="我的项目" data-link="" data-url="" data-shorturl="" data-date="2012-05-27 14:09" data-password="" data-path="/我的项目/" f-index="8">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="我的项目
+创建时间: 2012-05-27 14:09"><span class="ico ico-folder"></span><span class="text">我的项目</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-27 14:09</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338034494151045" data-type="folder" data-title="学习资料" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 20:14" data-password="" data-path="/学习资料/" f-index="9">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="学习资料
+创建时间: 2012-05-26 20:14"><span class="ico ico-folder"></span><span class="text">学习资料</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 20:14</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338100383157967" data-type="folder" data-title="迅雷下载" data-link="" data-url="" data-shorturl="" data-date="2012-05-27 14:33" data-password="" data-path="/迅雷下载/" f-index="10">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="迅雷下载
+创建时间: 2012-05-27 14:33"><span class="ico ico-folder"></span><span class="text">迅雷下载</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-27 14:33</div>
+                                </li>
+                                <li class="row filelist-item clearfix " data-nid="1338024678153174" data-type="folder" data-title="音乐" data-link="" data-url="" data-shorturl="" data-date="2012-05-26 17:31" data-password="" data-path="/音乐/" f-index="11">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="音乐
+创建时间: 2012-05-26 17:31"><span class="ico ico-musicfolder"></span><span class="text">音乐</span></div><div class="column column-size">&nbsp;</div><div class="column column-time">2012-05-26 17:31</div>
+                                </li>
+                                <li class="row filelist-item clearfix  " data-nid="1338102869155439" data-type="file" data-ori-size="485" data-size="1KB" data-title="各种账号.txt" data-date="2012-05-27 15:14" data-fhash="331e7270f7866e87beeed8cc954cab04dd3ca0bd" data-preview="" data-pic="" data-link="" data-url="" data-shorturl="" data-scid="5" data-mtime="2013-03-29 20:39:18" data-file-suffix="txt" data-extract-status="" data-password="" data-path="/各种账号.txt" f-index="12">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="各种账号.txt
+类型: 文本文件
+大小: 1KB
+修改时间: 2012-05-27 15:14"><span class="ico txt ico-txt" data-imgurl=""></span><span class="text">各种账号.txt</span></div><div class="column column-size">1KB</div><div class="column column-time">2012-05-27 15:14</div>
+                                </li>
+                                <li class="row filelist-item clearfix  " data-nid="1338024679153198" data-type="file" data-ori-size="210432" data-size="205.5KB" data-title="欢迎使用360云盘.doc" data-date="2012-05-26 17:31" data-fhash="d3edb38dc7ad3c9597e4d837e8d10cf9c96cb64b" data-preview="" data-pic="" data-link="" data-url="" data-shorturl="" data-scid="5" data-mtime="2013-03-29 20:37:44" data-file-suffix="doc" data-extract-status="" data-password="" data-path="/欢迎使用360云盘.doc" f-index="13">
+                                    <div class="column column-checkbox"><label></label></div><div class="column column-name" title="欢迎使用360云盘.doc
+类型: Word文档
+大小: 205.5KB
+修改时间: 2012-05-26 17:31"><span class="ico doc ico-doc" data-imgurl=""></span><span class="text">欢迎使用360云盘.doc</span></div><div class="column column-size">205.5KB</div><div class="column column-time">2012-05-26 17:31</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="fileListHistory" class="clearfix" style="display: none;">
+                    <div class="listholder file-list-box">
+                        <div class="head file-list-head clearfix">
+                            <div class="column column-hisversionid">
+                                <span data-field="versionid">时光号</span>
+                            </div>
+                            <div class="column column-hissize">
+                                <span data-field="fsize">大小</span>
+                            </div>
+                            <div class="column column-histime">
+                                <span data-field="fmtime">修改日期</span>
+                            </div>
+                        </div>
+                        <div class="main">
+                            <div class="content clearfix">
+                                <ul class="list list-list clearfix"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="searchArea" class="category-area search-category-area" style="display: none;">
+                <div class="toolbar clearfix"></div>
+                <div class="crumb clearfix">
+                    <div class="crumb-path"><a class="back" data-cn="back" data-index="-1" href="#%2F">返回上一级</a><a class="first-item path-item" data-index="-1" title="全部文件" style="max-width: 44%;" href="#%2F">全部文件</a><span class="last-item path-item" data-index="0" title="搜索：mp3" style="max-width: 51%;">搜索：mp3</span></div>
+                </div>
+                <div class="category-list category-search-list clearfix file-list-box"></div>
+            </div>
+            <div id="videoArea" class="category-area" style="display: none;">
+                <div class="toolbar clearfix"></div>
+                <div class="crumb">
+                    <div class="crumb-path">
+                        <!-- <span class="first-item path-item" data-index="-1" title="全部文件">全部文件</span> -->
+
+                        <span class="last-item path-item" data-index="0" title=""></span>
+
+                    </div>
+                </div>
+                <div class="category-list category-video-list clearfix file-list-box"></div>
+            </div>
+            <div id="musicArea" class="category-area" style="display: none;">
+                <div class="toolbar clearfix"></div>
+                <div class="crumb">
+                    <div class="crumb-path">
+                        <!-- <span class="first-item path-item" data-index="-1" title="全部文件">全部文件</span> -->
+
+                        <span class="last-item path-item" data-index="0" title=""></span>
+
+                    </div>
+                </div>
+                <div class="category-list category-music-list clearfix file-list-box"></div>
+            </div>
+            <div id="textArea" class="category-area" style="display: none;">
+                <div class="toolbar clearfix"></div>
+                <div class="crumb">
+                    <div class="crumb-path">
+                        <!-- <span class="first-item path-item" data-index="-1" title="全部文件">全部文件</span> -->
+
+                        <span class="last-item path-item" data-index="0" title=""></span>
+
+                    </div>
+                </div>
+                <div class="category-list category-text-list clearfix file-list-box"></div>
+            </div>
+            <iframe id="mainFrame" frameborder="no" style="display: none;" scrolling="auto" name="mainFrame"></iframe>
+            <div id="loadingMask" style="opacity: 0; display: none;"><div></div><span>加载文件列表中...</span></div>
+        </div>
+    </div>
+    <div id="newShareDia" class="share-panel"></div>
+    <div id="x-yp-1" style="left: -10000px; top: -10000px;" class="menu menu-sys cmd-panel"><ul><li data-cn="rename" class="item rename"><a class="" href="#" onclick="return false;"><i class="icon icon-rename"></i><span class="text ">重命名</span></a></li><li data-cn="sfilemove" class="item sfilemove"><a class="" href="#" onclick="return false;"><i class="icon icon-sfilemove"></i><span class="text ">移动</span></a></li><li data-cn="moveoutsfile" class="item moveoutsfile-menu"><a class="" href="#" onclick="return false;"><i class="icon icon-moveoutsfile"></i><span class="text ">转出文件保险箱</span></a></li><li data-cn="filehistory" class="item filehistory"><a class="" href="#" onclick="return false;"><i class="icon icon-filehistory"></i><span class="text ">文件时光机</span></a></li></ul></div><div id="x-yp-2" style="left: -10000px; top: -10000px;" class="menu menu-sys cmd-panel"><ul><li data-cn="rename" class="item rename"><a class="" href="#" onclick="return false;"><i class="icon icon-rename"></i><span class="text ">重命名</span></a></li><li data-cn="move" class="item move"><a class="" href="#" onclick="return false;"><i class="icon icon-move"></i><span class="text ">移动</span></a></li><li data-cn="moveinsfile" class="item moveinsfile"><a class="" href="#" onclick="return false;"><i class="icon icon-moveinsfile"></i><span class="text ">转入文件保险箱</span></a></li><li data-cn="offline" class="item offline-menu"><a class="" href="#" onclick="return false;"><i class="icon icon-offline"></i><span class="text ">离线下载</span></a></li><li data-cn="filehistory" class="item filehistory"><a class="" href="#" onclick="return false;"><i class="icon icon-filehistory"></i><span class="text ">文件时光机</span></a></li></ul></div><div id="x-yp-3" style="left: -10000px; top: -10000px;" class="menu menu-sys cmd-panel"><ul><li data-cn="opendoc" class="item opendoc"><a class="" href="#" onclick="return false;"><i class="icon icon-opendoc"></i><span class="text ">在线查看</span></a></li><li data-cn="dl" class="item dl"><a class="" href="#" onclick="return false;"><i class="icon icon-dl"></i><span class="text ">下载</span></a></li><li data-cn="pack-dl" class="item pack-dl"><a class="" href="#" onclick="return false;"><i class="icon icon-pack-dl"></i><span class="text ">下载</span></a></li><li data-cn="del" class="item del"><a class="" href="#" onclick="return false;"><i class="icon icon-del"></i><span class="text ">删除</span></a></li><li data-cn="rename" class="item rename"><a class="" href="#" onclick="return false;"><i class="icon icon-rename"></i><span class="text ">重命名</span></a></li><li data-cn="move" class="item move"><a class="" href="#" onclick="return false;"><i class="icon icon-move"></i><span class="text ">移动</span></a></li><li data-cn="sfilemove" class="item sfilemove"><a class="" href="#" onclick="return false;"><i class="icon icon-sfilemove"></i><span class="text ">移动</span></a></li><li data-cn="restore" class="item restore"><a class="" href="#" onclick="return false;"><i class="icon icon-restore"></i><span class="text ">还原</span></a></li><li data-cn="diskdel" class="item diskdel"><a class="" href="#" onclick="return false;"><i class="icon icon-diskdel"></i><span class="text ">删除</span></a></li><li data-cn="moveinfile" class="item moveinsfile"><a class="" href="#" onclick="return false;"><i class="icon icon-moveinsfile"></i><span class="text ">转入文件保险箱</span></a></li><li data-cn="moveoutsfile" class="item moveoutsfile"><a class="" href="#" onclick="return false;"><i class="icon icon-moveoutsfile"></i><span class="text ">转出文件保险箱</span></a></li><li data-cn="filehistory" class="item filehistory"><a class="" href="#" onclick="return false;"><i class="icon icon-filehistory"></i><span class="text ">文件时光机</span></a></li><li data-cn="link" class="item link"><a class="" href="#" onclick="return false;"><i class="icon icon-link"></i><span class="text ">分享</span></a></li><li data-cn="link-batch" class="item link-batch"><a class="clearfix" href="#" onclick="return false;"><i class="icon icon-link-batch"></i><span class="text ">分享</span></a></li><li data-cn="link-del" class="item dellink"><a class="" href="#" onclick="return false;"><i class="icon icon-dellink"></i><span class="text ">取消分享</span></a></li><li data-cn="link-view" class="item link-view"><a class="" href="#" onclick="return false;"><i class="icon icon-link-view"></i><span class="text ">查看分享链接</span></a></li><li data-cn="link-del" class="item link-del"><a class="" href="#" onclick="return false;"><i class="icon icon-link-del"></i><span class="text ">取消分享</span></a></li><li data-cn="link-copy" class="item link-copy"><a class="" href="#" onclick="return false;"><i class="icon icon-link-copy"></i><span class="text ">复制分享链接</span></a></li><li data-cn="extract-on" class="item extract-on"><a class="" href="#" onclick="return false;"><i class="icon icon-extract-on"></i><span class="text ">启用提取码</span></a></li><li data-cn="extract-off" class="item extract-off"><a class="" href="#" onclick="return false;"><i class="icon icon-extract-off"></i><span class="text ">取消提取码</span></a></li></ul></div><div id="x-yp-4" style="left: -10000px; top: -10000px;" class="menu menu-sys cmd-panel"><ul><li data-cn="upload" class="item upload show"><a class="" href="#" onclick="return false;"><i class="icon icon-upload"></i><span class="text ">上传文件</span></a></li><li data-cn="new" class="item new show"><a class="" href="#" onclick="return false;"><i class="icon icon-new"></i><span class="text ">新建文件夹</span></a></li><li data-cn="refresh" class="item refresh show"><a class="" href="#" onclick="return false;"><i class="icon icon-refresh"></i><span class="text ">刷新</span></a></li></ul></div><div style="zoom: 1; z-index: 99; position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0; display: none; width: 1365px; height: 650px;"></div><div id="miniProxy" class="miniProxy"></div><div id="dropOverlay" style="opacity: 0; display: none;"><h1>将文件拖放至此可以上传</h1></div><div class="proxy-rectselector" style="display: none; left: 1140px; top: 319px; width: 0px; height: 0px;"></div>
+</body>
+</html>

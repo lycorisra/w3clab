@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../css/fullPage.css" rel="stylesheet" />
+    <link href="../vendor/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        *{
+		    margin: 0px;
+		    padding: 0px;
+	    }
+        .content {
+            position:absolute;
+            border:1px solid #ccc;
+        }
+            .content div {
+                /*border:1px solid #ccc;*/
+            }
+		.m1 {
+			margin-top:40px;
+		}
+		.m2 {
+			margin-top:30px;
+		}
+		.m3 {
+			margin-top:0px;
+		}
+		.p1 {
+			text-align: center;
+			font-weight: bold;
+		}
+        .comment p {
+			display: inline-block;
+			margin: 0px;
+			padding: 5px 3px 0px 3px;
+            text-indent:2em;
+        } 
+		.right {
+			position:absolute;
+			bottom:10px;
+			right:20px;
+			font-size:13px;
+		}
+        .imgtemplate {
+            width:100px;
+            cursor:pointer;
+        }
+            .imgtemplate:hover {
+                width: 200px;
+            }
+    </style>
+</head>
+<body>
+    <div class="btnwrap">
+        <div class="controlArrow prev"></div>
+        <div class="controlArrow next"></div>
+    </div>
+    <div id="pageContain">
+        <div class="page">
+            第一步，选择奖状模版
+            <div class="templates">
+                <img src="../img/template01.jpg" alt="奖状模版" class="imgtemplate" />
+            </div>
+            </div>
+            <div class="page current">
+                第二步，在线编辑奖状
+                <div>
+		            <button class="btn btn-info btn-xs" value="放大" onclick="preview.zoomIn();" >放大</button>
+		            <button class="btn btn-info btn-xs" value="缩小" onclick="preview.zoomOut();" >缩小</button>
+	            </div>
+	            <img id="img" src="" width="600" />
+	            <div id="text" class="content">
+                    <div class="p1" contenteditable="true">2015年第2号</div>
+
+                    <div class="p1 m1" contenteditable="true">项目名称：《2015平台春节活动》</div>
+                    <div class="p1" contenteditable="true">姓名：白伟</div>
+                    <div class="p1" contenteditable="true">部门：系统运维组</div>
+
+                    <div class="p1 m2" contenteditable="true">项目评语：</div>
+        
+                    <div class="comment m3" contenteditable="true">
+                        <p>
+                            2015春节活动，为JJ平台在新用户引入、活跃用户规模、同时在线峰值等方面，均迎来历史数据新高，做出了重要贡献。
+                            活动实施期间，各相关执行人员响应快速、执行到位、协作积极，高效的达成了以推动“传播”为目标的项目诉求。
+                            特此对相关项目人员进行嘉奖，以资鼓励！
+                        </p>
+                    </div>
+
+                    <div class="right m4" contenteditable="true">日期：2015年4月10日</div>
+                </div>
+            </div>
+        <div class="page">
+            第三步，生成和预览奖状
+        </div>
+        <div class="page">
+            第四步，导出奖状
+        </div>
+    </div>
+    <script src="../vendor/jquery-1.11.1.min.js"></script>
+    <script src="../js/fullPage.js"></script>
+    <script type="text/javascript">
+        var runPage = new FullPage({
+            id: 'pageContain',
+            slideTime: 500,
+            effect: {
+                transform: {
+                    translate: 'X',
+                    scale: [1, 1],
+                    rotate: [0, 0]
+                },
+                opacity: [0, 1]
+            },
+            mode: 'touch',
+            easing: 'ease-out'
+        });
+        var nav = {
+            init: function () {
+                $('.prev').click(function () {
+                    runPage.prev();
+                    nav.setPage();
+                })
+                $('.next').click(function () {
+                    runPage.next();
+                    nav.setPage();
+                })
+                $('.sumary li').click(function () {
+                    var page = $(this).attr('data-page') * 1; //将字符转换为数字
+                    $(this).addClass('active').siblings().removeClass('active');
+                    runPage.go(page);
+                })
+                document.onkeyup = function (event) {
+                    var e = event || window.event || arguments.callee.caller.arguments[0];
+                    if (e && e.keyCode == 37) { // Left
+                        $('.prev').click();
+                    }
+                    else if (e && e.keyCode == 39) { // Right
+                        $('.next').click();
+                    }
+                }
+            },
+            setPage: function () {
+                var curPage = runPage.thisPage(),
+                    page = $('.sumary li[data-page="' + curPage + '"]');
+
+                if (page.length == 2) {
+                    page = page.filter('[class="level02"]');
+                }
+                page.addClass('active').siblings().removeClass('active');
+            }
+        };
+        var preview = {
+            $img: $('#img'),
+            $content: $('#text'),
+            imgWidth: 600,
+            imgHeight: 0,
+            textWidth: 0,
+            textHeight: 0,
+            scale: 1,
+            init: function () {
+                this.imgWidth = this.$img.width();
+                this.imgHeight = this.$img.height();
+                this.scale = this.imgWidth / this.imgHeight;
+                this.textWidth = this.imgWidth * 0.7;
+                this.textHeight = this.imgHeight * 0.59;
+                this.fontSize = 16;
+
+                var left = this.imgWidth * 0.15,
+                    top = this.imgHeight * 0.35;
+
+                this.$content.css({
+                    width: this.textWidth,
+                    height: this.textHeight,
+                    left: left,
+                    top: top
+                });
+            },
+            getSize: function () {
+                var size = {
+                    width: this.$img.imgWidth(),
+                    height: this.$img.imgHeight()
+                };
+                return size;
+            },
+            zoomSize: function (scale) {
+                this.imgWidth = this.imgWidth * scale;
+                this.imgHeight = this.imgHeight * scale;
+                this.textWidth = this.textWidth * scale;
+                this.textHeight = this.textHeight * scale;
+                this.fontSize = this.fontSize * scale;
+
+                var left = this.imgWidth * 0.15,
+                    top = this.imgHeight * 0.31;
+
+                this.$img.css({ width: this.imgWidth });
+                this.$content.css({
+                    width: this.textWidth,
+                    height: this.textHeight,
+                    left: left,
+                    top: top,
+                    fontSize: this.fontSize
+                });
+            },
+            zoomIn: function () {
+                this.zoomSize(1.1);
+            },
+            zoomOut: function () {
+                this.zoomSize(0.9);
+            }
+        };
+        $(function () {
+            document.getElementById('img').onload = function () {
+                preview.init();
+            }
+            document.getElementById('img').src = '../Img/award.jpg';
+            //preview.init();
+        })
+        nav.init();
+    </script>
+</body>
+</html>

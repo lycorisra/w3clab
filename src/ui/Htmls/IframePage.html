@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>这是主页面</title>
+	<script src="../vendor/jquery-1.11.1.min.js"></script>
+<script src="../vendor/layer/layer.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<div id="dom" style="width:200px;height:100px;background-color: green;">
+   		<input id="btn" type="button" value="打开提示框" onclick="alert1()" />
+	</div>
+        <input id="btnOpen" type="button" onclick="openWinOnParent();" value="在父级弹出窗口" />
+   <script type="text/javascript">
+       function alert1() {
+           layer.alert('layer mobile页');
+           //$('.layui-layer-title', parent.document).css({
+           //    backgroundColor: '#000',
+           //    opacity: 0.3
+           //})
+           //console.log($('.layui-layer-title', parent.document));
+       }
+       function openWinOnParent() {
+           var curIndex=parent.layer.open({
+               type: 2,
+               area: ['500px', '230px'],
+               fix: false, //不固定
+               maxmin: true,
+               content: '这是子窗口内容'
+           })
+           var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+           parent.layer.close(index); //再执行关闭  
+       }
+   </script>
+</body>
+</html>
+                
+

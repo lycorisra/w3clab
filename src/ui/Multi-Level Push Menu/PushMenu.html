@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Push Menu - Demo 2</title>
+    <meta name="description" content="Multi-Level Push Menu: Off-screen navigation with multiple levels" />
+    <meta name="keywords" content="multi-level, menu, navigation, off-canvas, off-screen, mobile, levels, nested, transform" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="../../Scripts/jquery-1.8.2.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <style type="text/css">
+        .mp-header{
+            height:50px;
+        } 
+        .mp-menu {
+            float: left;
+        }
+         .mp-frame-content {
+             background:#ccc;
+        }
+        .mp-frame {
+            width: auto;
+            height: 100%;
+        }
+        .mp-header {
+            width:100%;
+            height:50px;
+        }
+        .mp-menu {
+            float: left;
+        }
+        .mp-frame-content {
+            float: left;
+            margin-left: auto;
+            margin-right: 0px;
+            /*float:right;*/
+            /*width:100%;*/
+            width: 60%;
+            height: 100%;
+        }
+            .mp-frame-content iframe {
+                width: 100%;
+                height: 100%;
+            }
+        .mp-right {
+            position:absolute;
+            float: right;
+            right:10px;
+            top:50px;
+            width: 100%;
+            height:100%;
+            background-color:#b200ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="mp-header">
+        <p><a href="#" id="trigger" class="menu-trigger">Open/Close Menu</a></p>
+    </div>
+    <div class="container">
+        <!-- Push Wrapper -->
+        <div class="mp-pusher" id="mp-pusher">
+
+
+            <div class="mp-frame-content">
+                <iframe class="mp-frame" src="www.baidu.com"></iframe>
+            </div>
+            <div class="mp-header">
+                <p><a href="#" id="trigger" class="menu-trigger">Open/Close Menu</a></p>
+            </div>
+    <div class="container">
+        <!-- Push Wrapper -->
+        <div class="mp-pusher" id="mp-pusher">
+            <!-- mp-menu -->
+            <nav id="mp-menu" class="mp-menu">
+                <div class="mp-level">
+                    <h2 class="icon icon-world">精通CSS 高级Web标准解决方案</h2>
+                    <ul data-path="F:/resource/CSS/精通CSS：高级Web标准解决方案第2版/源码/Examples/">
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-display" href="#">chapter01</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-display">chapter01</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter01">
+                                    <li class="icon icon-arrow-left">
+                                        <a class="icon icon-phone" href="F:/resource/CSS/精通CSS：高级Web标准解决方案第2版/源码/Examples/chapter01/microformats.htm">microformats.htm</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter02</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter02</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter02">
+                                    <li><a href="Examples/chapter02/child-selector.htm">child-selector.htm</a></li>
+                                    <li><a href="#">specificity.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter03</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter03</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter03">
+                                    <li><a href="#">enclosing-floats.htm</a></li>
+                                    <li><a href="#">floating-boxes.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter04</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter04</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter04">
+                                    <li><a href="#">box-shadow.htm</a></li>
+                                    <li><a href="#">easy-drop-shadow.htm</a></li>
+                                    <li><a href="#">easy-drop-shadow2.htm</a></li>
+                                    <li><a href="#">fixed-rounded.htm</a></li>
+                                    <li><a href="#">flexible-rounded.htm</a></li>
+                                    <li><a href="#">fuzzy-drop-shadow.htm</a></li>
+                                    <li><a href="#">opacity.htm</a></li>
+                                    <li><a href="#">parallax.htm</a></li>
+                                    <li><a href="#">RGBa.htm</a></li>
+                                    <li><a href="#">rounded-background-image.htm</a></li>
+                                    <li><a href="#">rounded-border.htm</a></li>
+                                    <li><a href="#">rounded-border-image.htm</a></li>
+                                    <li><a href="#">rounded-border-shadow.htm</a></li>
+                                    <li><a href="#">box-shadow.htm</a></li>
+                                    <li><a href="#">simple-fixed-rounded.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter05</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter05</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter05">
+                                    <li><a href="buttons">buttons.htm</a></li>
+                                    <li><a href="css-rollover">css-rollover.htm</a></li>
+                                    <li><a href="css-tooltips">css-tooltips.htm</a></li>
+                                    <li><a href="external-links">external-links.htm</a></li>
+                                    <li><a href="fade">fade.htm</a></li>
+                                    <li><a href="pixy">pixy.htm</a></li>
+                                    <li><a href="pixy-rollover">pixy-rollover.htm</a></li>
+                                    <li><a href="simple-button">simple-button.htm</a></li>
+                                    <li><a href="styled-underlines">styled-underlines.htm</a></li>
+                                    <li><a href="target">target.htm</a></li>
+                                    <li><a href="visited-links">visited-links.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter06</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter06</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter06">
+                                    <li><a href="dropdowns">dropdowns.htm</a></li>
+                                    <li><a href="flickr-rollovers">flickr-rollovers.htm</a></li>
+                                    <li><a href="horizontal-nav">horizontal-nav.htm</a></li>
+                                    <li><a href="imagemap">imagemap.htm</a></li>
+                                    <li><a href="pagination-nav">pagination-nav.htm</a></li>
+                                    <li><a href="remote-rollovers">remote-rollovers.htm</a></li>
+                                    <li><a href="simple-list">simple-list.htm</a></li>
+                                    <li><a href="sliding-doors-nav">sliding-doors-nav.htm</a></li>
+                                    <li><a href="vertical-nav">vertical-nav.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter07</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter07</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter07">
+                                    <li><a href="advanced-form">advanced-form.htm</a></li>
+                                    <li><a href="button-element">button-element.htm</a></li>
+                                    <li><a href="calender">calender.htm</a></li>
+                                    <li><a href="calender-styled">calender-styled.htm</a></li>
+                                    <li><a href="simple-form">simple-form.htm</a></li>
+                                    <li><a href="table-styling">table-styling.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter08</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter08</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter08">
+                                    <li><a href="2-col-fixed">2-col-fixed.htm</a></li>
+                                    <li><a href="3-col-elastic">3-col-elastic.htm</a></li>
+                                    <li><a href="3-col-fixed">3-col-fixed.htm</a></li>
+                                    <li><a href="3-col-liquid">3-col-liquid.htm</a></li>
+                                    <li><a href="centering-auto-margin">centering-auto-margin.htm</a></li>
+                                    <li><a href="css3-columns">css3-columns.htm</a></li>
+                                    <li><a href="equal-height-columns">equal-height-columns.htm</a></li>
+                                    <li><a href="faux-2-col-fixed">faux-2-col-fixed.htm</a></li>
+                                    <li><a href="faux-3-col-fixed">faux-3-col-fixed.htm</a></li>
+                                    <li><a href="faux-3-col-liquid">faux-3-col-liquid.htm</a></li>
+                                    <li><a href="liquid-images">liquid-images.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">chapter09</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">chapter09</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="chapter09">
+                                    <li><a href="margin-collapse">margin-collapse.htm</a></li>
+                                    <li><a href="#">specificity.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="icon icon-arrow-left">
+                            <a class="icon icon-news" href="#">climb</a>
+                            <div class="mp-level">
+                                <h2 class="icon icon-news">climb</h2>
+                                <a class="mp-back" href="#">back</a>
+                                <ul data-path="climb">
+                                    <li><a href="/index">index.htm</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- /mp-menu -->
+            
+            <div class="mp-frame-content">
+                <iframe src="Examples/chapter02/child-selector.htm"></iframe>
+            </div>
+
+            <!--<div class="mp-right"></div>-->
+        </div><!-- /pusher -->
+    </div>
+    <div class="mp-right">最外层靠右div</div>
+    <script src="js/classie.js"></script>
+    <script src="js/mlpushmenu.js"></script>
+    <script type="text/javascript">
+        new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'), {
+            type: 'cover'
+        });
+    </script>
+</body>
+</html>

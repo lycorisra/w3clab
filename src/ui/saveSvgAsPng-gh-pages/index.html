@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8"/>
+    <title>saveSvgAsPng</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <style>
+      @font-face {
+        font-family: 'Stalemate';
+        font-style: normal;
+        font-weight: 400;
+        src: url(stalemate.ttf) format('truetype');
+      }
+
+      input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+        padding: 15px;
+      }
+
+      h2, h3 {
+        margin-top: 0;
+      }
+
+      h3 .btn {
+        margin-top: -8px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      ul li {
+        padding: 30px 20px;
+        border-bottom: 1px dashed gray;
+      }
+
+      svg, img {
+        border: 1px solid lightgray;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+      }
+
+      .error {
+        border: 1px solid red;
+        border-radius: 10px;
+        color: red;
+        padding: 8px 10px;
+      }
+
+      #sized-with-css svg {
+        width: 200px;
+        height: 200px;
+      }
+
+      #selectors-prefixed svg rect {
+        fill: blue;
+      }
+
+      rect.css-styled {
+        fill: green !important;
+      }
+    </style>
+    </head>
+    <body>
+    <script type=text/template id=inline-template>
+      <div class=row>
+        <div class=col-md-6>
+          <h2></h2>
+        </div>
+
+        <div class=col-md-6>
+          <h3>Preview <button class="save btn">Save as PNG</button></h3>
+        </div>
+      </div>
+
+      <div class=row>
+        <div class="canvas col-md-6">
+        </div>
+
+        <div class=col-md-6>
+          <div class=preview></div>
+        </div>
+      </div>
+    </script>
+
+    <div class="container">
+      <!--<h1>saveSvgAsPng</h1>
+      <p>This page tests various features of saveSvgAsPng.</p>
+      <p>You can test your own SVG code in the Sandbox. If something doesn't work as expected, you can <a href="https://github.com/exupero/saveSvgAsPng/issues">file an issue on GitHub</a>.</p>-->
+
+      <ul>
+        <li id="embedded-png">
+          <svg width="500" height="500">
+            <image xlink:href="image.png" x="0" y="0" width="500" height="500"></image>
+          </svg>
+        </li>
+
+        <!--<li id=embedded-svg>
+          <svg width=200 height=200>
+            <image xlink:href=test.svg x=50 y=50 width=100 height=100></image>
+          </svg>
+        </li>-->
+
+      </ul>
+    </div>
+
+    <script src="../vendor/jquery-1.11.1.min.js"></script>
+    <script src="saveSvgAsPng.js"></script>
+    <script>
+      function handleFileSelect(evt) {
+        var $el = $('#filereader');
+        var files = evt.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+          var reader = new FileReader();
+          reader.onload = (function(file) {
+            return function(e) {
+              $el.find('.load-target').html(e.target.result);
+              svgAsDataUri($el.find('.load-target svg')[0], null, function(uri) {
+                $el.find('input').hide()
+                $el.find('.preview').html('<img src="' + uri + '" />');
+              });
+              $el.find('.save').click(function() {
+                saveSvgAsPng($el.find('.load-target svg')[0], 'test.png');
+              });
+            }
+          })(f);
+          reader.readAsText(f);
+        }
+      }
+
+      //if (window.File && window.FileReader && window.FileList && window.Blob) {
+      //  document.getElementById('file').addEventListener('change', handleFileSelect, false);
+      //}
+
+      function inlineTest(title, $el, saveOptions, testOptions) {
+        var svg = $el.html();
+        var template = $('#inline-template').html();
+        var row = $el.html(template);
+        row.find('h2').text(title);
+        row.find('.canvas').html(svg);
+
+        var canvas = row.find(testOptions && testOptions.selector || 'svg')[0];
+        svgAsDataUri(canvas, saveOptions, function(uri) {
+          row.find('.preview').html('<img src="' + uri + '" />');
+        });
+
+        row.find('.save').click(function() {
+          saveSvgAsPng(canvas, 'test.png', saveOptions);
+        });
+      }
+
+      inlineTest('With linked PNG image', $('#embedded-png'));
+      //inlineTest('With linked SVG image', $('#embedded-svg'));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <title>360云盘 - 我的云盘</title>
+    <style type="text/css">
+        #cricle {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background: #333;
+            overflow: hidden;
+        }
+
+            #cricle .left, #cricle .right, #cricle .text {
+                width: 200px;
+                height: 200px;
+            }
+
+            #cricle .text {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 41;
+                color: #fff;
+                font: 26px/200px 'arial';
+                text-align: center;
+            }
+
+            #cricle .mask {
+                z-index: 40;
+            }
+
+            #cricle .mask, #cricle .bg {
+                width: 100px;
+                height: 200px;
+                background: #333;
+                position: absolute;
+                top: 0;
+            }
+
+            #cricle .bg {
+                background: url(image/bg_blue.png) no-repeat 0 0;
+            }
+
+            #cricle .mask, #cricle .left .bg {
+                left: 0;
+            }
+
+            #cricle .right {
+                display: none;
+            }
+
+                #cricle .right .bg {
+                    background-position: right top;
+                    right: 0;
+                }
+    </style>
+    <link rel="icon" href="image/favicon-16.ico" sizes="16x16">
+    <link rel="icon" href="image/favicon-32.ico" sizes="32x32">
+    <link type="text/css" rel="stylesheet" href="css/my.src_datauri.min.css">
+</head>
+<body>
+    <div id="doc">
+        <div id="topPanel" class="header clearfix">
+            <a id="logo" class="logo" href="/my" title="云盘首页"></a>
+            <ul class="nav-bar clearfix">
+            <li class="tab-file first current"><a class="pan" href="/my" onclick="return false;" title="最安全的网络U盘">我的文件</a></li>
+            <li class=""><a class="my-photo current" data-tab="xiangce" href="#" title="云相册">云相册</a></li>
+            <li><a class="collect" href="#" title="从浏览器保存的内容">云收藏</a></li>
+            <li><a class="more" href="#" title="更多云服务">更多</a></li>
+            </ul>
+        <a style="float:left;line-height:55px;color:#fecf15;font-size:12px;" href="#" target="_blank">全新改版的iPhone版云盘发布！前去更新！</a>
+        <div class="top-bar-r heigher">
+            <div class="user-info-wrap">
+            <div class="user-name">
+                <a id="tpUserInfo" href="###" onclick="return false;" title="1258613428@qq.com">
+                <span class="avatar-mask"></span>
+                <img class="avatar" src="image/head.jpg" width="32" height="32" alt="">
+                <span class="name-box"><span class="text">1258613428@qq.com</span></span>
+                </a>
+                </div>
+            </div></div>
+        </div>
+
+        <div id="leftPanel">
+            <div class="nav">
+                <ul>
+                    <li class="tab-file clearfix" data-tab="file">
+                        <a tabindex="1">
+                            <i class="icon icon-file"></i>
+                            <span class="text">所有文件</span>
+                        </a>
+                    </li>
+                    <li class="tab-video clearfix" data-tab="video">
+                        <a tabindex="1">
+                            <i class="icon icon-video"></i>
+                            <span class="text">视频</span>
+                        </a>
+                    </li>
+                    <li class="tab-music clearfix" data-tab="music">
+                        <a tabindex="1">
+                            <i class="icon icon-music"></i>
+                            <span class="text">音乐</span>
+                        </a>
+                    </li>
+                    <li class="tab-text clearfix" data-tab="text">
+                        <a tabindex="1">
+                            <i class="icon icon-text"></i>
+                            <span class="text">文档</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-img clearfix" data-tab="img">
+                        <a tabindex="1">
+                            <i class="icon icon-img"></i>
+                            <span class="text">图片</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-link clearfix" data-tab="link">
+                        <a tabindex="1">
+                            <i class="icon icon-link"></i>
+                            <span class="text">我的分享</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-sFile clearfix" data-tab="sFile">
+                        <a tabindex="1">
+                            <i class="icon icon-sFile"></i>
+                            <span class="text">保险箱</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-inbox clearfix" data-tab="inbox">
+                        <a tabindex="1">
+                            <i class="icon icon-inbox"></i>
+                            <span class="text">收件箱</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                    <li class="tab-recycle clearfix" data-tab="recycle">
+                        <a tabindex="1">
+                            <i class="icon icon-recycle"></i>
+                            <span class="text">回收站</span>
+                            <span class="bg"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="mainPanel">
+            <div id="mainTabs">
+                <div class="real-search-bar search-bar search-none">
+                    <div class="search-input-ctn">
+                        <label class="search-placeholder" style="display:none;">搜索我的文件</label>
+                        <input class="search-input search-text" placeholder="搜索我的文件" data-placeholder="搜索我的文件">
+                        <i class="icon icon-close ss-close"></i>
+                    </div>
+                    <span class="y-btn y-btn-gray y-btn-submit">
+                    <i class="icon icon-search"></i>
+                    </span>
+                </div>
+
+                <div id="toolbar" class="cmd-panel">
+                    <div class="btn-group btns-filelist">
+                    <div class="item">
+                        <span id="tbUpload" class="y-btn y-btn-blue upload show" data-cn="upload">
+                        <i class="icon icon-upload"></i><span class="label">上传</span>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <span id="tbNew" class="y-btn y-btn-gray new show" data-cn="new">
+                        <i class="icon icon-new"></i><span class="label">新建文件夹</span>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <span id="tbDl" class="y-btn y-btn-gray dl" data-cn="dl">
+                        <i class="icon icon-download"></i>
+                        <span class="label">下载</span>
+                        </span>
+                        <span id="tbDel" class="y-btn y-btn-gray del" data-cn="del"><i class="icon icon-delete"></i><span class="label">删除</span>
+                        </span>
+                        <span id="tbLink" class="y-btn y-btn-gray link" data-cn="link"><i class="icon icon-share"></i>
+                        <span class="label">分享</span></span>
+                        <span id="tbMore" class="y-btn y-btn-gray more y-btn-more" data-cn="more"><span class="label">更多</span>
+                        <i class="caset"></i></span>
+                    </div>
+                    </div>
+
+                    <div class="display-mode">
+                        <a id="tbText" title="切换到列表视图" href="###" onclick="return false;" data-cn="text" class="cmd text">列表视图</a>
+                        <a id="tbPic" title="切换到大图视图" href="###" onclick="return false;" data-cn="pic" class="cmd pic">大图标视图</a>
+                    </div>
+                    <div class="sort">
+                        <h2>
+                            <a href="###" onclick="return false;" class="name asc" data-field="file_name" data-order="asc">名称</a>
+                        </h2>
+                        <ul>
+                            <li><a href="###" onclick="return false;" class="name asc" data-field="name" data-order="asc"><i class="icon"></i>文件名</a></li>
+                            <li><a href="###" onclick="return false;" class="fsize asc" data-field="fsize" data-order="asc"><i class="icon"></i>大小</a></li>
+                            <li>
+                                <a href="###" onclick="return false;" class="new-upload desc" data-field="mtime" data-order="desc">
+                                    <i class="icon"></i>最近上传
+                                </a>
+                            </li>
+                            <li>
+                                <a href="###" onclick="return false;" class="fmtime desc" data-field="fmtime" data-order="desc">
+                                    <i class="icon"></i>修改日期
+                                </a>
+                            </li>
+                            <li>
+                                <a href="###" onclick="return false;" class="del-date desc" data-field="mtime" data-order="desc"><i class="icon"></i>删除日期</a>
+                            </li>
+                            <li>
+                                <a href="###" onclick="return false;" class="share-date desc" data-field="mtime" data-order="desc">
+                                    <i class="icon"></i>日期
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                   </div>
+                </div>
+
+                <div id="crumb" class="cmd-panel">
+                    <div class="crumb-path"><span class="back" data-cn="back" data-index="-1">返回上一级</span>
+                    <span class="first-item path-item" data-index="-1" title="所有文件">所有文件</span>
+                    <span class="last-item path-item" data-index="0" title="书籍">书籍</span>
+                    </div>
+                </div>
+                <div id="fileList" class="file-list-box clearfix file-tab" data-tab="file-tab">
+                    <div id="fileListHead" class="file-list-head clearfix" style="margin-right: 17px; display: none;">
+                    <div class="column column-checkbox"><label class="chkall"></label></div>
+                    <div class="column column-name"><span class="file-sort" data-field="name">文件名<span class="arrow_u"></span></span></div>
+                    <div class="column column-size"><span class="file-sort" data-field="fsize">大小</span></div>
+                    <div class="column column-time"><span class="file-sort" data-field="fmtime">修改日期</span></div>
+                 </div>
+                    <div id="fileListMain">
+                        <div id="listHolder" class="clearfix">
+                            <ul id="list" class="file-list clearfix ico-list">
+                                <li class="row filelist-item clearfix" data-type="folder" data-title="Image" data-path="/Image/">
+                                    <div class="column column-name" title="Image创建时间: 2012-05-27 13:08">
+                                    <span class="ico ico-folder"></span>
+                                    <span class="text">我的文档</span>
+                                    </div>
+                                </li>
+                                <li class="row filelist-item clearfix" data-type="folder">
+                                    <div class="column column-name" title="qq记录创建时间: 2012-05-26 20:54">
+                                    <span class="ico ico-folder"></span>
+                                    <span class="text">谷歌书签</span>
+                                    </div>
+                                </li>
+                                <li class="row filelist-item clearfix">
+                                    <div class="column column-name" title="各种账号.txt类型: 文本文件大小: 1KB修改时间: 2012-05-27 15:14">
+                                    <span class="ico txt ico-txt" data-imgurl=""></span>
+                                    <span class="text">各种账号.txt</span></div>
+                                </li>
+                                <li class="row filelist-item clearfix" data-type="file">
+                                    <div class="column column-name" title="欢迎使用360云盘.doc类型: Word文档大小: 205.5KB修改时间: 2012-05-26 17:31">
+                                        <span class="ico doc ico-doc" data-imgurl=""></span>
+                                        <span class="text">欢迎使用360云盘.doc</span>
+                                    </div>
+                                </li>
+                                <li class="row filelist-item clearfix" data-type="file">
+                                    <div id="cricle">
+                                        <div class="mask" style="display: none;"></div>
+                                        <div class="left" style="-webkit-transform: rotate(360deg);">
+                                            <div class="bg"></div>
+                                        </div>
+                                        <div class="right" style="display: block;">
+                                            <div class="bg"></div>
+                                        </div>
+                                        <div class="text">100</div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

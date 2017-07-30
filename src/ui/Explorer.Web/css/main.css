@@ -1,0 +1,102 @@
+﻿body {
+min-width: 980px;
+}
+html, body {
+height: 100%;
+overflow-y: hidden;
+}
+body {
+background: #fff;
+color: #333;
+font: 12px/1.5 tahoma,arial;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+margin: 0;
+padding: 0;
+}
+user agent stylesheetbody {
+display: block;
+margin: 8px;
+}
+#doc, #crumb {
+overflow: hidden;
+}
+#doc {
+min-width: 900px;
+}
+.header {
+background: #3083eb;
+border-bottom: 1px solid #1f74df;
+height: 56px;
+position: relative;
+z-index: 3;
+}
+.clearfix {
+}
+#leftPanel {
+background-color: #f6fafd;
+border-right: 1px solid #e5ebf1;
+bottom: 0;
+font-family: "Microsoft Yahei";
+left: 0;
+position: absolute;
+top: 57px;
+width: 199px;
+z-index: 11;
+}
+#mainPanel {
+margin-left: 200px;
+position: relative;
+z-index: 1;
+}
+.nav {
+overflow-y: auto;
+position: relative;
+}
+.nav ul {
+border-bottom: 1px solid #e5ebf1;
+padding: 7px 0 0;
+vertical-align: top;
+}
+ol, ul {
+list-style: none;
+}
+.nav li {
+border-top: 1px solid transparent;
+border-bottom: 1px solid transparent;
+cursor: pointer;
+height: 42px;
+position: relative;
+z-index: 1;
+}
+.nav li a {
+display: block;
+height: 42px;
+line-height: 42px;
+padding: 0 0 0 60px;
+}
+a {
+color: #0068b7;
+outline: none;
+text-decoration: none;
+}
+Inherited from li.tab-file.clearfix
+.nav li {
+cursor: pointer;
+}
+user agent stylesheetli {
+text-align: -webkit-match-parent;
+}
+.nav .text {
+color: #384463;
+cursor: pointer;
+display: block;
+font-size: 14px;
+}
+Inherited from a
+.nav li a {
+line-height: 42px;
+}
+a {
+    color: #0068b7;
+}

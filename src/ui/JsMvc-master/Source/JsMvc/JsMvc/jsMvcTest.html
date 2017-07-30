@@ -1,0 +1,86 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>http://blog.csdn.net/spring21st/article/details/7852179</title>
+</head>
+<body>
+    <h3>JavaScript simple MVC</h3>
+    <div>
+        <select name="" id="setAnimal">
+            <option value="cat">cat</option>
+            <option value="fish">fish</option>
+            <option value="bird">bird</option>
+        </select>
+        <p id="whatDoesThisAnimalDo"></p>
+    </div>
+
+    <!--没有使用mvc模式-->
+    <script type="text/javascript">
+        document.getElementById('setAnimal').onchange = function () {
+            var thisAnimalDoes;
+            switch (this.value) {
+                case 'cat':
+                    thisAnimalDoes = 'cat meows';
+                    break;
+                case 'fish':
+                    thisAnimalDoes = 'fish swims';
+                    break;
+                case 'bird':
+                    thisAnimalDoes = 'bird fies';
+                    break;
+                default:
+                    thisAnimalDoes = 'wuff?';
+            }
+
+            document.getElementById('whatDoesThisAnimalDo').innerHTML = thisAnimalDoes;
+        };
+    </script>
+
+    <!--使用mvc模式-->
+    <script type="text/javascript">
+        // controller
+        Animal = {
+            start: function () {
+                this.view.start();
+            },
+            set: function (animalName) {
+                this.model.setAnimal(animalName);
+            }
+        };
+        // model
+        Animal.model = {
+            animalDictionary: {
+                cat: 'meows',
+                fish: 'swims',
+                bird: 'flies'
+            },
+            currentAnimal: null,
+            setAnimal: function (animalName) {
+                this.currentAnimal = this.animalDictionary[animalName] ? animalName : null;
+                this.onchange();
+            },
+            onchange: function () {
+                Animal.view.update();
+            },
+            getAnimalAction: function () {
+                return this.currentAnimal ? this.currentAnimal + " " + this.animalDictionary[this.currentAnimal] : 'wuff?';
+            }
+        };
+        // view
+        Animal.view = {
+            start: function () {
+                document.getElementById('setAnimal').onchange = this.onchange;
+            },
+            onchange: function () {
+                Animal.set(document.getElementById('setAnimal').value);
+            },
+            update: function () {
+                document.getElementById('whatDoesThisAnimalDo').innerHTML = Animal.model.getAnimalAction();
+            }
+        };
+        Animal.start();
+    </script>
+
+</body>
+</html>    

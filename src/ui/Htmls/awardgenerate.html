@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>奖状在线编辑、生成和导出</title>
+    <link href="../vendor/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="../vendor/jquery-1.11.1.min.js"></script>
+    <script src="../vendor/bootstrap-3.3.5/js/bootstrap.js"></script>
+    <script src="../vendor/layer/layer.js"></script>
+    <script src="../vendor/layer/extend/layer.ext.js"></script>
+    <script src="../js/canvasToImg.js"></script>
+    <script src="../js/Canvas2Image.js"></script>
+
+    <style type="text/css">
+        *{
+		    margin: 0px;
+		    padding: 0px;
+	    }
+        .topbotron {
+            width:100%;
+            height:100px;
+            padding:10px;
+            margin:0 auto 20px;
+            background-color:#ddd;
+        }
+        ul.nav-tabs {
+            /*width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);*/
+        }
+        ul.nav-tabs li {
+            border-top:1px solid #ddd;
+        }
+            ul.nav-tabs li:first-child {
+                border-top: none;
+            }
+            ul.nav-tabs li a {
+                padding: 8px 16px;
+                border-radius: 0px;
+            }
+            ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+                color: #fff;
+                background: #0088cc;
+                border: 1px solid #0088cc;
+            }
+            ul.nav-tabs li:last-child a {
+                border-radius: 0 0 4px 4px;
+            }
+        ul.nav-tabs.affix {
+            top: 120px;
+        }
+        .editarea {
+            position:relative;
+        }
+        .content {
+            /*display:none;*/
+            position:absolute;
+            border:1px solid #ccc;
+        }
+            .content div {
+                /*border:1px solid #ccc;*/
+            }
+		.m1 {
+			margin-top:40px;
+		}
+		.m2 {
+			margin-top:30px;
+		}
+		.m3 {
+			margin-top:0px;
+		}
+		.p1 {
+			text-align: center;
+			font-weight: bold;
+		}
+        .comment p {
+			display: inline-block;
+			margin: 0px;
+			padding: 5px 3px 0px 3px;
+            text-indent:2em;
+        } 
+		.right {
+			position:absolute;
+			bottom:10px;
+			right:20px;
+			font-size:13px;
+		}
+        .preview {
+            /*float:right;*/
+        }
+        .preview img{
+            width:600px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body data-spy="scroll">
+	<div class="container">
+        <div class="topbotron">
+            <h2>奖状在线设计、生成和导出</h2>
+        </div>
+        <div class="row">
+            <div class="col-xs-3" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                    <li class="active"><a href="#section-1">第一步 选择奖状模板</a></li>
+                    <li><a href="#section-2">第二步 编辑奖状</a></li>
+                    <li><a href="#section-3">第三步 生成和预览奖状</a></li>
+                    <li><a href="#section-4">第四步 导出奖状</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-9">
+                <h2 id="section-1">第二步、选择奖状模板</h2>
+                <p>选择模板，根据选择的奖状模板进行编辑</p>
+                <div id="layer-photos">
+                    <img src="../img/template01.jpg" layer-src="../img/template01.jpg" width="200" alt="奖状模板1" />
+                    <img src="../img/template01.jpg" layer-src="../img/template01.jpg" width="200" alt="奖状模板2" />
+                </div>
+                <hr />
+                <h2 id="section-2">第二步、选择奖状模板</h2>
+                <p>
+                    编辑奖状 说明：由于中文字体和英文字体的宽度问题，导致最终生成的奖状文字内容不能保证完全对齐，
+                    解决办法是英文文字和数字用全角符号状态下输入，这样能极大的保障了文字的左右对齐；
+                </p>
+                <div>
+		            <button class="btn btn-info btn-xs" onclick="preview.zoomIn();" >放大</button>
+		            <button class="btn btn-info btn-xs" onclick="preview.zoomOut();" >缩小</button>
+		            <button class="btn btn-info btn-xs" onclick="award.createAward();">生成并预览</button>
+	            </div> 
+                <div class="editarea">
+	                <img id="img" width="600" src="../Img/award.jpg" onload="preview.init();" />
+	                <div id="text" class="content">
+                        <div id="p1" class="p1" contenteditable="true">2015年第2号</div>
+             
+                        <div id="p2" class="p1 m1" contenteditable="true">项目名称：《2015平台春节活动》</div>
+                        <div id="p3" class="p1" contenteditable="true">姓名：白伟</div>
+                        <div id="p4" class="p1" contenteditable="true">部门：系统运维组</div>
+           
+                        <div id="p5" class="p1 m2" contenteditable="true">项目评语：</div>
+             
+                        <div id="p6" class="comment m3" contenteditable="true">
+                            <p>
+                                2015春节活动，为JJ平台在新用户引入、活跃用户规模、同时在线峰值等方面，均迎来历史数据新高，做出了重要贡献。
+                                活动实施期间，各相关执行人员响应快速、执行到位、协作积极，高效的达成了以推动“传播”为目标的项目诉求。
+                                特此对相关项目人员进行嘉奖，以资鼓励！
+                            </p>
+                        </div>
+
+                        <div id="p7" class="right m4" contenteditable="true">日期：2015年4月10日</div>
+                    </div>
+                </div>
+                <hr />
+                <h2 id="section-3">第三步、选择奖状模板</h2>
+                <p>选择模板，根据选择的奖状模板进行编辑</p>
+                <div class="preview">
+        
+                </div>
+                <hr />
+                <h2 id="section-4">第四步、选择奖状模板</h2>
+                <p>选择模板，根据选择的奖状模板进行编辑</p>
+                <hr />
+            </div>
+        </div>
+	</div>
+    <script type="text/javascript">
+        var preview = {
+            $img: $('#img'),
+            $content: $('#text'),
+            imgWidth: 600,
+            imgHeight: 0,
+            textWidth: 0,
+            textHeight: 0,
+            scale: 1,
+            init: function () {
+                this.imgWidth = this.$img.width();
+                this.imgHeight = this.$img.height();
+                this.scale = this.imgWidth / this.imgHeight;
+                this.textWidth = this.imgWidth * 0.7;
+                this.textHeight = this.imgHeight * 0.59;
+                this.fontSize = 16;
+
+                var left = this.imgWidth * 0.15,
+                    top = this.imgHeight * 0.31;
+
+                this.$content.css({
+                    width: this.textWidth,
+                    height: this.textHeight,
+                    left: left,
+                    top: top
+                });
+            },
+            getSize: function () {
+                var size = {
+                    width: this.$img.imgWidth(),
+                    height: this.$img.imgHeight()
+                };
+                return size;
+            },
+            zoomSize: function (scale) {
+                this.imgWidth = this.imgWidth * scale;
+                this.imgHeight = this.imgHeight * scale;
+                this.textWidth = this.textWidth * scale;
+                this.textHeight = this.textHeight * scale;
+                this.fontSize = this.fontSize * scale;
+
+                var left = this.imgWidth * 0.15,
+                    top = this.imgHeight * 0.31;
+
+                this.$img.css({ width: this.imgWidth });
+                this.$content.css({
+                    width: this.textWidth,
+                    height: this.textHeight,
+                    left: left,
+                    top: top,
+                    fontSize: this.fontSize
+                });
+            },
+            zoomIn: function () {
+                this.zoomSize(1.1);
+            },
+            zoomOut: function () {
+                this.zoomSize(0.9);
+            }
+        };
+        $(function () {
+            //preview.init();
+            $('#btnPreview').click(function () {
+                vas.drawImage('thecanvas', '../Img/award.jpg');
+                vas.openImage();
+            })
+            layer.photos({
+                photos:'#layer-photos'
+            })
+        })
+        var award = {
+            src: '../Img/award.jpg',
+            width: 2480,
+            height: 3366,
+            clearHtmlTag: function (str) {
+                str = str.replace(/<\/?[^>]*>/g, ''); //去除HTML tag  
+                str = str.replace(/&nbsp;/g, '');//去除空格 
+                str = str.replace(/[\n\r]/g, '');//去除换行符
+                str = str.replace(/\ +/g, '');//去除空格
+                return str;
+            },
+            // 获取在线编辑的奖状内容
+            getContent: function () {
+                var content = {};
+
+                content.p1 = award.clearHtmlTag($('#p1').html());
+                content.p2 = award.clearHtmlTag($('#p2').html());
+                content.p3 = award.clearHtmlTag($('#p3').html());
+                content.p4 = award.clearHtmlTag($('#p4').html());
+                content.p5 = award.clearHtmlTag($('#p5').html());
+
+                content.p7 = award.clearHtmlTag($('#p7').html());
+
+                var array = $('#p6').children(),
+                    items = [];
+
+                array.each(function (i, e) {
+                    var p = award.clearHtmlTag($(e).html());//$(e).html().replace(/[\n\r]/g, '').replace(/\ +/g, '').replace(/&nbsp;/g, '');
+                    items.push(p);
+                });
+                content.p6 = items.join('|n');
+                return content;
+            },
+            // 将编辑的内容写入canvas画布中
+            fillContent: function (context, content) {
+                vas.fillText(context, content.p1, award.width / 2, award.height * 0.31);
+                vas.fillText(context, content.p2, award.width / 2, award.height * 0.389);
+                vas.fillText(context, content.p3, award.width / 2, award.height * 0.389 + 60);
+                vas.fillText(context, content.p4, award.width / 2, award.height * 0.389 + 120);
+                vas.fillText(context, content.p5, award.width / 2, award.height * 0.522);
+
+                var array = content.p6.split('|n'),
+                    textArea = {},
+                    y = award.height * 0.5625,
+                    textMaxWidth = award.width * 0.58;
+
+                for (var i = 0; i < array.length; i++) {
+                    textArea = vas.fillParagraph(context, array[i], award.width * 0.21, y, textMaxWidth);
+                    y += textArea.height;
+                }
+                vas.fillText(context, content.p7, award.width * 0.81, award.height * 0.86, { textAlign: 'right', fontSize: '40px' });
+            },
+            // 绘制奖状，包括奖状模版图片和文本内容
+            drawAward: function (canvas) {
+                var index = layer.load(0, { shade: true, shade: 0.6 }); //0代表加载的风格，支持0-2
+                var dataurl,
+                    context = canvas.getContext('2d'),
+                    options = {
+                        x: 0,
+                        y: 0,
+                        width: 2480,
+                        height: 3366,
+                        maxWidth: 2480
+                    },
+                    callback = {
+                        fillText: function () {
+                            var content = award.getContent();
+                            award.fillContent(context, content)
+                        },
+                        closeTip: function () {
+                            layer.close(index);
+                        }
+                    }
+
+                vas.drawImage(canvas, award.src, options, callback);
+            },
+            createAward: function () {
+                var dataurl;
+                canvas = document.createElement('canvas');
+
+                canvas.width = award.width;
+                canvas.height = award.height;
+
+                //document.body.appendChild(canvas);
+              
+                award.drawAward(canvas);
+            }
+        }
+    </script>
+</body>
+</html>
+                
+

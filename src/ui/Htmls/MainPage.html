@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>try it</title>
+<link href="../vendor/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet" />
+
+<script src="../vendor/jquery-1.11.1.min.js"></script>
+<script src="../vendor/bootstrap-3.3.5/js/bootstrap.js"></script>
+<script src="../vendor/layer/layer.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <input type="button" onclick="openIframe()" value="打开框架页" />
+   <script type="text/javascript">
+       function openIframe() {
+           layer.open({
+               type: 2,
+               title: '这是主页面',
+               shadeClose: true,
+               shade: 0.8,
+               area: ['380px', '90%'],
+               content: 'iframePage.html'
+           });
+       }
+       function alert() {
+           layer.alert('layer mobile页');
+       }
+   </script>
+</body>
+</html>
+                

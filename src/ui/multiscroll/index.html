@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<title>multiscroll.js制作斯柯达野帝页面演示_dowebok</title>
+<link rel="stylesheet" href="css/jquery.multiscroll.css">
+<style>
+* { margin: 0; padding: 0;}
+body { font-size: 100%;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%;}
+
+.loading { background: url(images/loading.gif) 50% no-repeat;}
+.loading .dowebok-Wrap { opacity: 0;}
+.dowebok-Wrap { -webkit-transition:opacity 1s; -moz-transition:opacity 1s; -o-transition:opacity 1s; transition: opacity 1s;}
+
+.ms-section { font-family: "Microsoft Yahei"; color: #fff;}
+.ms-section { background-position: 50% 50%; background-repeat: no-repeat; background-size: cover;}
+.ms-section10 { background-color: #000;}
+
+.ms-left .ms-section1 { background-image: url(images/l1.jpg);}
+.ms-left .ms-section2 { background-image: url(images/l2.jpg);}
+.ms-left .ms-section3 { background-color: #000;}
+.ms-left .ms-section4 { background-image: url(images/l4.jpg);}
+.ms-left .ms-section4.down { background-image: url(images/l4-2.jpg);}
+.ms-left .ms-section5 { background-image: url(images/l5.jpg);}
+.ms-left .ms-section6 { background-image: url(images/l6.jpg);}
+.ms-left .ms-section7 { background-image: url(images/l7.jpg);}
+.ms-left .ms-section8 { background-color: #000;}
+.ms-left .ms-section9 { background-image: url(images/l9.jpg);}
+
+.ms-right .ms-section1 { background-image: url(images/r1.jpg);}
+.ms-right .ms-section2 { background-image: url(images/r2.jpg);}
+.ms-right .ms-section3 { background-image: url(images/r3.jpg);}
+.ms-right .ms-section3.turnOn { background-image: url(images/r3-2.jpg);}
+.ms-right .ms-section4 { background-color: #000;}
+.ms-right .ms-section5 { background-image: url(images/r5.jpg);}
+.ms-right .ms-section6 { background-image: url(images/r6.jpg);}
+.ms-right .ms-section7 { background-color: #000;}
+.ms-right .ms-section8 { background-image: url(images/r8.jpg);}
+.ms-right .ms-section9 { background-image: url(images/r9.jpg);}
+
+.ms-left .ms-section1 h1 strong { line-height: 1.1em; font-size: 5em; text-transform: uppercase; text-shadow: -2px 2px 0 #a6acae;}
+.ms-left .ms-section1 h1 span { display: block;}
+.ms-section1 .txt { position: relative; left: -100%; top: 15%; opacity: 0; transition-duration: 0.5s;}
+.green-box { display: inline-block; margin-top: 30px; padding: 6px 10px; line-height: 1.2em; font-size: 2.5em; background: url(images/bg-greenbox.png) 0 0 repeat; *display: inline; zoom: 1;}
+
+.button { display: inline-block; margin-top: 30px; padding: 7px 73px 7px 25px; font-size: 1.5em; color: #fff; text-decoration: none; background: url(images/button.gif) right;}
+.button2 { padding: 7px 25px 7px 60px; background: url(images/button-left.gif) 0 no-repeat;}
+
+.ms-section .txt2 { position: relative; top: 20%; padding: 0 15%;}
+.ms-section .txt2 h2 { margin-bottom: 30px; font-size: 4em; line-height: 1.1em; text-shadow: -2px 2px 0 #a6acae; text-transform: uppercase;}
+.ms-section .txt2 h2 span { display: block;}
+.ms-section .txt2 h3 { margin: 20px 0; font-size: 2em;}
+.ms-section .txt2 p { font-size: 1.5em;}
+
+.ms-section2 .txt2 { position: absolute; left: 0; top: 75%; width: 100%; padding: 0; text-align: center;}
+.ms-left .txt2 { left: -100%; transition-duration: 0.5s;}
+.ms-right .txt2 { left: 100%; transition-duration: 0.5s;}
+
+.active .txt2 { left: 0; transition-delay: 1s;}
+.active .txt { left: 20%; opacity: 1; transition-delay: 1s;}
+
+#loading123 { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #fff url(images/loading.gif) 50% no-repeat;}
+</style>
+</head>
+
+<body class="loading">
+<div class="dowebok-Wrap">
+	<div class="ms-left">
+		<div class="ms-section ms-section1">
+			<div class="txt">
+				<h1><strong>斯柯达 <span>野帝</span></strong></h1>
+				<p class="green-box">让自己忘乎所以！</p>
+			</div>
+		</div>
+		<div class="ms-section ms-section2">
+			<div class="txt2">
+				<h2>Yeti</h2>
+				<p>意气风发每一天</p>
+			</div>
+		</div>
+		<div class="ms-section ms-section3">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>SUV的惊心动魄的一天晚上</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button btn3l" href="javascript:">开灯</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section4">
+		</div>
+		<div class="ms-section ms-section5">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>SUV的惊心动魄的一天晚上</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button" href="javascript:">一个按钮</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section6">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>SUV的惊心动魄的一天晚上</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+			</div>
+		</div>
+		<div class="ms-section ms-section7"></div>
+		<div class="ms-section ms-section8">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>SUV的惊心动魄的一天晚上</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button" href="javascript:">一个按钮</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section9">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>介绍的文字 介绍的文字</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button" href="javascript:">一个按钮</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section10">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>最后一页</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button" href="http://www.dowebok.com/">一个按钮</a>
+			</div>
+		</div>
+	</div>
+	<div class="ms-right">
+		<div class="ms-section ms-section1"></div>
+		<div class="ms-section ms-section2">
+			<div class="txt2">
+				<h2>Yeti outdoor</h2>
+				<p>抢你的地方远未知</p>
+			</div>
+		</div>
+		<div class="ms-section ms-section3"></div>
+		<div class="ms-section ms-section4">
+			<div class="txt2">
+				<h2>Bagaznik <span>i varioflex</span></h2>
+				<h3>斯柯达野帝触目惊心的可压缩</h3>
+				<p>当后排座椅折叠，这是很容易感谢Varioflex，收拾斯柯达雪人新建即使是非常大的不寻常的形状的物品。</p>
+				<a class="button button2 btn42" href="javascript:">放倒座位</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section5"></div>
+		<div class="ms-section ms-section6"></div>
+		<div class="ms-section ms-section7">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>SUV的惊心动魄的一天晚上</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button button2" href="javascript:">一个按钮</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section8"></div>
+		<div class="ms-section ms-section9">
+			<div class="txt2">
+				<h2>Nowe <span>REFLEKTORY</span> <span>i design</span></h2>
+				<h3>另一段介绍文字 另一段介绍文字</h3>
+				<p>斯柯达野帝加入了新一代斯柯达车型，其动感的设计已经赢得了认可和普及。成熟的自信得到外表现。</p>
+				<a class="button button2" href="javascript:">一个按钮</a>
+			</div>
+		</div>
+		<div class="ms-section ms-section10"></div>
+	</div>
+</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.multiscroll.min.js"></script>
+<script>
+$(function(){
+	$('#dowebok-Wrap').multiscroll({
+		verticalCentered: false
+	});
+
+	var $btn3l = $('.btn3l');
+	$btn3l.on('click', function(){
+		$('.ms-right').find('.ms-section3').toggleClass('turnOn');
+		var $thisTxt = $(this).html();
+		if($thisTxt == '开灯'){
+			$(this).html('关灯');
+		} else {
+			$(this).html('开灯');
+		}
+		return false;
+	});
+
+	$('.btn42').on('click', function(){
+		$('.ms-left').find('.ms-section4').toggleClass('down');
+		var $thisTxt = $(this).html();
+		if($thisTxt == '放倒座位'){
+			$(this).html('竖起座位');
+		} else {
+			$(this).html('放倒座位');
+		}
+		return false;
+	});
+});
+
+//页面加载时的 Loading 效果
+$(window).load(function(){
+	window.setTimeout(function(){
+		$('body').removeClass('loading');
+	}, 2000);
+});
+</script>
+
+</body>
+</html>

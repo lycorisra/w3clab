@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>全屏/整屏滚动组件fullPage演示-水平滚动_dowebok</title>
+    <meta data="http://www.dowebok.com/demo/143/">
+    <style>
+        body, div, p {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        html {
+            overflow: hidden;
+        }
+        body {
+            width: 100%;
+            *cursor: default;
+            overflow: hidden;
+            font: 16px/1.8 "Microsoft YaHei", Helvetica, STHeiti STXihei, Microsoft JhengHei, Arial;
+        }
+        #pageContain {
+            overflow: hidden;
+        }
+        .page {
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .current .contain, .slide .contain {
+            display: block;
+        }
+
+        .current {
+            display: block;
+            z-index: 1;
+        }
+
+        .slide {
+            display: block;
+            z-index: 2;
+        }
+
+        .swipe {
+            display: block;
+            z-index: 3;
+            transition-duration: 0ms !important;
+            -webkit-transition-duration: 0ms !important;
+        }
+        #navBar {
+            z-index: 3;
+            position: absolute;
+            top: 30%;
+            right: 3%;
+        }
+
+            #navBar .active {
+                background: #ccc;
+            }
+
+            #navBar li {
+                cursor: pointer;
+                margin-bottom: 10px;
+                transition: all .7s ease;
+                border-radius: 50%;
+                line-height: 40px;
+                text-align: center;
+                width: 40px;
+                height: 40px;
+            }
+        .contain {
+            width: 500px;
+            height: 300px;
+            padding: 10px;
+            overflow: auto;
+            margin: 50px auto;
+            position: relative;
+            z-index: 0;
+        }
+        .text-content {
+            width:50%;
+            padding:5px 10px;
+        }
+            .text-content p {
+                text-indent: 2em;
+                color: #727F8C;
+            }
+        .img-content {
+            padding:10px;
+            margin-left:20px;
+        }
+        .btnwrap {
+            position:absolute;
+            width: 200px;
+            height: 200px;
+            background: green;
+            z-index:9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pageContain">
+        <div class="page page1 current">
+            <div class="contain">
+                <p>院级管理员主要的操作流程如下：</p>
+                <p>
+                    院级管理员主要的操作流程如下：
+                    首先添加班主任用户，添加本学院的系、专业和班级信息，如果班主任已填写个人信息且已添加管理班级，则审核班主任，学生通过班主任审核后，可以查看并修改学生基本信息，添加学生日常表彰、日常违纪、各项处分及异动情况，最后审核学生的各种申请记录及班级荣誉记录。院级管理员具体操作如下：
+                </p>
+            </div>
+            <div class="img-content">
+                <img alt="" src="images/img1.png" />
+            </div>
+        </div>
+
+        <div class="page page2">
+            <div class="text-content">
+                <h3>用户管理</h3>
+                <p>主要功能是对用户进行添加、编辑、删除、重置管理员密码操作，注意：</p>
+                <p>1）显示：如果您是校级管理员，则系统显示所有用户，如果您是院级管理员，则显示您本人及您所在学院的所有班主任用户</p>
+                <p>2）添加：校级管理员不能添加班主任用户、班主任用户只能由院级管理员添加；院级管理员只能添加班主任用户。如下图2：</p>
+                <p>3） 编辑：校级管理员可以编辑所有用户，院级管理员可以编辑其本人在内的所有班主任用户，编辑界面与添加用户界面一样，但是，院级管理员不能编辑“所属权限组”</p>
+                <p>4） 删除：最高管理员不能删除，其他的无异，删除可以单条删除，也可批量删除。</p>
+                <p>5） 重置密码：选中某个管理员或是多个管理员，然后点击“重置密码”按钮，可以把选中的管理员密码充值为6个“1”</p>
+            </div>
+            <div class="img-content">
+                <img alt="" src="images/img2.png" />
+            </div>
+        </div>
+
+        <!--<div class="btnwrap">
+            <div id="prev">prev</div>
+            <div id="next">next</div>
+        </div>-->
+    </div>
+
+    <ul id="navBar">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fullPage1.min.js"></script>
+    <script>
+        var runPage;
+        runPage = new FullPage({
+            id: 'pageContain',
+            slideTime: 800,
+            effect: {
+                transform: {
+                    translate: 'X',
+                    scale: [1, 1],
+                    rotate: [0, 0]
+                },
+                opacity: [0, 1]
+            },
+            mode: 'wheel,touch,nav:navBar',
+            easing: 'ease'
+        });
+        $('#prev').click(function () {
+            runPage.prev();
+        })
+        $('#next').click(function () {
+            runPage.next();
+        })
+    </script>
+</body>
+</html>

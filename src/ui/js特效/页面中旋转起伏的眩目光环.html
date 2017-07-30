@@ -1,0 +1,74 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>网页特效代码|JsCode.CN|---页面中旋转起伏的眩目光环</title>
+
+</head>
+
+<body>
+
+<script language="JavaScript">
+<!-- 
+if (document.all){
+
+amount=15; 
+Color='#ffaaff';
+GlowColor='#ff00ff';
+
+ypos=0;
+xpos=0;
+ybase=15;
+xbase=-80;
+step=0.07;
+currStep=0;
+TrigSplit=360/amount;
+MY=0;
+MX=0;
+C=0;
+c=0.05
+for (i=0; i < amount; i++)
+document.write('<div id="ieDiv" style="position:absolute;top:0px;left:0px;height:20;width:20;text-align:center"><B>.</B></div>');
+function orbit(){
+MY=document.body.scrollTop+document.body.clientHeight/2 + document.body.clientHeight/2.8*Math.cos((C)/3)*Math.cos(C/10);
+MX=document.body.scrollLeft+20+document.body.clientWidth/2.2 + document.body.clientWidth/2.4*Math.sin((C)/5)*Math.sin(C/20);
+ypos=MY;
+xpos=MX;
+for (i=0; i < amount; i++){
+var d=ieDiv[i].style;
+if (d.pixelTop > ypos+2){
+ {
+  d.fontSize=18;
+  d.paddingTop=7;
+  d.filter='glow(color='+GlowColor+', strength=7)';
+ }
+if (d.pixelTop > ypos+10)
+ {
+  d.fontSize=15;
+  d.paddingTop=10;
+  d.filter='glow(color='+GlowColor+', strength=6)';
+ }
+}
+else
+{
+ d.fontSize=25;
+ d.paddingTop=0;
+ d.color=Color;
+ d.filter='glow(color='+GlowColor+', strength=8)';
+}
+d.top=ypos+ybase*Math.sin(currStep+i*TrigSplit*Math.PI/180);
+d.left=xpos+xbase*Math.cos(currStep+i*TrigSplit*Math.PI/180);
+}
+C+=c;
+currStep+=step;
+setTimeout('orbit()',20);
+}
+window.onload=orbit;
+}
+// -->
+</script>
+
+</body>
+
+</html>
+<a href="http://www.alixixi.com/Dev/HTML/jsrun/">欢迎访问阿里西西网页特效集</a>

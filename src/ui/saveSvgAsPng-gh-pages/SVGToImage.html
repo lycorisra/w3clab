@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>前端实现SVG转PNG</title>
+</head>
+<body>
+    <h5>一般方式</h5>
+    <p>1、创建image，src = xxx.svg</p>
+    <p>2、创建创建canvas，dragImage将图片贴到canvas上</p>
+    <p>3、利用toDataUrl函数，将canvas的表示为url</p>
+    <p>4、new image，src = url，download = download.png</p>
+    <h5>问题</h5>
+    <p>1、浏览器对canvas的限制，解决办法：svg切分成多个图片进行导出</p>
+    <p>1、导出包含图片的svg后出现空白</p>
+</body>
+</html>

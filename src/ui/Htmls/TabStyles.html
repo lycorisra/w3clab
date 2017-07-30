@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../iconfont/iconfont.css" rel="stylesheet" />
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body, html {
+            color: #555;
+            background-color: #EEEEEE;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #BBBBBB;
+        }
+        #pagebody {
+            width: 80%;
+            height: 300px;
+            padding:20px;
+            margin: 50px auto;
+            background-color:#FFFFFF;
+        }
+        ul.font-size-fix {
+            font-size: 0;
+        }
+        ul.tabs li {
+            width: 24%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            cursor:pointer;
+            position:relative;
+            border-bottom: 1px solid #ccc;
+            font-size: 16px;
+            display: inline-block;
+        }
+        ul.style01 li.current {
+            height:52px;
+            border:1px solid #ccc;
+            border-top:2px solid #FFA500;
+            border-bottom:none;
+        }
+        li.current:after {
+            /*content: ' #xe636';*/
+        }
+        li .close {
+            display:none;
+        }
+        li.current .close {
+            display:initial;
+            position:absolute;
+            right:10px;
+        }
+        li.current .close:hover {
+            font-size:20px;
+            color:#f00;
+        }
+        ul.style02 li {
+            background-color:#E6E6E6;
+        }
+        ul.style02 li.current {
+            text-align: center;
+            border-style:solid;
+            border-width:0 10px 50px 0;
+            border-color:transparent transparent #F5F5F5 transparent;
+        }
+        #content {
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pagebody">
+        <ul id="tabs" class="tabs font-size-fix style01">
+            <li class="iconfont">
+                <a href="#" title="tab1">One</a>
+                <a class="close">&#xe650;</a>
+            </li>
+            <li class="iconfont">
+                <a href="#" title="tab2">Two</a>
+                <a class="close">&#xe650;</a>
+            </li>
+            <li class="iconfont">
+                <a href="#" title="tab3">Three</a>
+                <a class="close">&#xe650;</a>
+            </li>
+            <li class="iconfont">
+                <a href="#" title="tab4">Four</a>
+                <a class="close">&#xe650;</a>
+            </li>
+        </ul>
+        <div id="content">
+            <div id="tab1">
+                <h2>Lorem ipsum sit amet</h2>
+                <p>Praesent risus nisi, iaculis nec condimentum vel, rhoncus vel dolor. Aenean nisi lectus, varius nec tempus id, dapibus non quam.</p>
+                <p>Suspendisse ac libero mauris. Cras lacinia porttitor urna, vitae molestie libero posuere et. Mauris turpis tortor, mollis non vulputate sit amet, rhoncus vitae purus.</p>
+                <h3>Pellentesque habitant</h3>
+                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+            </div>
+            <div id="tab2">
+                <h2>Vivamus fringilla suscipit justo</h2>
+                <p>Aenean dui nulla, egestas sit amet auctor vitae, facilisis id odio. Donec dictum gravida feugiat.</p>
+                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras pretium elit et erat condimentum et volutpat lorem vehicula</p>
+                <p>Morbi tincidunt pharetra orci commodo molestie. Praesent ut leo nec dolor tempor eleifend.</p>
+            </div>
+            <div id="tab3">
+                <h2>Phasellus non nibh</h2>
+                <p>Non erat laoreet ullamcorper. Pellentesque magna metus, feugiat eu elementum sit amet, cursus sed diam. Curabitur posuere porttitor lorem, eu malesuada tortor faucibus sed.</p>
+                <h3>Duis pulvinar nibh vel urna</h3>
+                <p>Donec purus leo, porttitor eu molestie quis, porttitor sit amet ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec accumsan ornare elit id imperdiet. </p>
+                <p>Suspendisse ac libero mauris. Cras lacinia porttitor urna, vitae molestie libero posuere et. </p>
+            </div>
+            <div id="tab4">
+                <h2>Cum sociis natoque penatibus</h2>
+                <p>Magnis dis parturient montes, nascetur ridiculus mus. Nullam ac massa quis nisi porta mollis venenatis sit amet urna. Ut in mauris velit, sed bibendum turpis.</p>
+                <p>Nam ornare vulputate risus, id volutpat elit porttitor non. In consequat nisi vel lectus dapibus sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent bibendum sagittis libero.</p>
+                <h3>Imperdiet sem interdum nec</h3>
+                <p>Mauris rhoncus tincidunt libero quis fringilla.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="../vendor/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#content div").hide(); // Initially hide all content
+            $("#tabs li:first").addClass('current'); // Activate first tab
+            $("#content div:first").fadeIn(); // Show first tab content
+
+            $('#tabs li').click(function (e) {
+                //e.preventDefault();
+                $("#content div").hide(); //Hide all content
+                $("#tabs li").removeClass('current'); //Reset id's
+                $(this).addClass('current'); // Activate this
+                $('#' + $(this).find('a').attr('title')).fadeIn(); // Show content for current tab
+            });
+        });
+    </script>
+</body>
+</html>

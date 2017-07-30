@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>html－阿里西西WEB开发www.alixixi.com</title>
+<script language="JavaScript">
+<!-- Activate Cloaking Device
+
+
+var i = 0; 
+// used to cycle thru messages 
+var TextNumber = -1;
+// array of messages 
+var TextInput = new Object();
+// used to load manipulate message 
+var HelpText=""; 
+// used to load message
+var Text = ""; 
+// length of timeout (smaller is faster) 
+var Speed=50;
+// used to display message number
+var message=0;
+// used to position text in ver 2.0
+var addPadding="\r\n";
+
+// Each element of TextInput represents a single message.
+TextInput[0] = "今天注意了有新的任务布置"; 
+TextInput[1] = "欢迎你的光临！本站为你提供大量javascript下载";
+TextInput[2] = "重点介绍Javascript";
+TextInput[3] = "与制作网页特效密切相关的技术";
+TextInput[4] = "本站同时有影音空间等栏目";
+TextInput[5] = "还有新闻及健康方面的资料";
+TextInput[6] = "还有宽带网方面的大量技术文章";
+TextInput[7] = "本站网址：http://www.njcatv.net";
+
+TotalTextInput = 7; // (0, 1, 2, 3, 4, 5, 6, 7)
+
+// Positioning and speed vary between versions.
+var Version = navigator.appVersion; 
+if (Version.substring(0, 1)==3)
+{
+Speed=200;
+addPadding="";
+}
+
+for (var addPause = 0; addPause <= TotalTextInput; addPause++) 
+{TextInput[addPause]=addPadding+TextInput[addPause];}
+var TimerId
+var TimerSet=false;
+
+// Called by >>> button (display next message) .
+function nextMessage() 
+{
+if (!TimerSet)
+{
+TimerSet=true;
+clearTimeout (TimerId);
+if (TextNumber>=TotalTextInput)
+{ 
+alert("This is the end of the list!");
+TimerSet=false;
+}
+else
+{
+TextNumber+=1;
+message=TextNumber+1;
+document.forms[0].elements[2].value= message;
+Text = TextInput[TextNumber];
+HelpText = Text;
+}
+teletype();
+}
+}
+
+// Gets and displays character from rollMessage() . 
+// Variable Speed controls length of timeout and thus the speed of typing.
+function teletype() 
+{
+if (TimerSet)
+{
+Text=rollMessage();
+TimerId = setTimeout("teletype()", Speed);
+document.forms[0].elements[0].value=Text;
+}
+}
+
+// Pulls one character at a time from string and returns (as Text) to function teletype() for displaying.
+function rollMessage () 
+{
+i++;
+var CheckSpace = HelpText.substring(i-1, i);
+CheckSpace = "" + CheckSpace;
+if (CheckSpace == " ") 
+{i++;}
+if (i >= HelpText.length+1) 
+{
+TimerSet=false;
+Text = HelpText.substring(0, i);
+i=0; 
+return (Text);
+}
+Text = HelpText.substring(0, i);
+return (Text);
+}
+// Initially called by onLoad in BODY tag to load title. 
+function initTeleType() 
+{
+Text="\r\n Manual Tele-Type Display";
+document.forms[0].elements[0].value=Text;
+}
+// Called by <<< button (get previous message).
+function lastMessage() 
+{
+if (!TimerSet  &&  TextNumber!=-1)
+{
+TimerSet=true;
+clearTimeout (TimerId);
+if (TextNumber<=0)
+{ 
+alert("This is the beginning of the list!");
+TimerSet=false;
+}
+else 
+{
+TextNumber-=1;
+message=TextNumber+1;
+document.forms[0].elements[2].value= message;
+Text = TextInput[TextNumber];
+HelpText = Text;
+} 
+teletype(); 
+}
+}
+
+// Deactivate Cloaking --></script>
+
+
+</head>
+<body>
+
+<form>
+<table CELLSPACING="0" CELLPADDING="0" WIDTH="17%">
+<tr>
+<td width="100%" colspan="3" valign="top"><div align="center"><p><textarea NAME="teletype" ROWS="3" COLS="28" wrap="yes">
+<a href="http://www.alixixi.com/Dev/HTML/jsrun/">欢迎访问阿里西西网页特效集</a>
+</body>
+</html>
+<a href="http://www.alixixi.com/Dev/HTML/jsrun/">欢迎访问阿里西西网页特效集</a>

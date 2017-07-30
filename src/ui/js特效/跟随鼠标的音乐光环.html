@@ -1,0 +1,49 @@
+<body bgcolor="#000000">
+<SCRIPT LANGUAGE="JavaScript">
+ns = (document.layers)?1:0;
+Clrs = new Array('ff0000','00ff00','ffffff','ff00ff','ffa500','ffff00','00ff00','ffffff','ff00ff')
+yBase = 0;
+xBase = 0;
+step = 3;
+currStep = 0;
+Ypos = 0;
+Xpos = 0;
+if (ns){
+for (i = 0; i < 14; i++)
+document.write('<LAYER NAME="n'+i+'" LEFT=0 TOP=0 CLIP="0,0,'+i/4+','+i/4+'"></LAYER>');
+window.captureEvents(Event.MOUSEMOVE);
+function nMouse(evnt){
+Ypos = evnt.pageY;
+Xpos = evnt.pageX;
+}
+window.onMouseMove = nMouse;
+}
+else{
+document.write('<div style="position:absolute;top:0;left:0"><div style="position:relative">');
+for (i=0; i < 14; i++)
+{document.write('<div id="me" style="position:absolute;top:0;left:0;width:'+i/4+';height:'+i/4+';font-size:'+i/4+'"></div>')}
+document.write('</div></div>');
+function iMouse() {
+Ypos = event.y+document.body.scrollTop;
+Xpos = event.x+document.body.scrollLeft;
+}
+document.onmousemove = iMouse;
+}
+function Comet() {
+var yBase = (document.layers)?window.innerHeight/4:window.document.body.clientHeight/4;
+var xBase = (document.layers)?window.innerWidth/4:window.document.body.clientWidth/4;
+for (i = 0; i < 14; i++){
+var randCol = Math.round(Math.random()*8);
+var layer = (document.layers)?document.layers['n'+i]:me[i].style;
+layer.top =Ypos + yBase*Math.cos((currStep+i*4)/12)*Math.cos(0.7+currStep/200);
+layer.left = Xpos + xBase*Math.sin((currStep+i*3)/10)*Math.sin(8.2+currStep/400);
+if (ns) layer.bgColor = Clrs[randCol];
+else
+layer.background = Clrs[randCol];
+}
+currStep += step;
+setTimeout("Comet()",10);
+}
+window.onload = Comet;
+</script>
+<a href="http://www.alixixi.com/Dev/HTML/jsrun/">欢迎访问阿里西西网页特效集</a>
